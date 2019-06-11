@@ -12,7 +12,7 @@ public class PedidoController {
     @GetMapping
     public String getView(final Model model) {
         model.addAttribute("msg", "Hello there, This message has been injected from the controller method");
-        return "helloworld";
+        return "modules/home/home";
     }
 
 }
