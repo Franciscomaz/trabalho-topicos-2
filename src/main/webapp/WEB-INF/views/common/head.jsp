@@ -14,19 +14,8 @@
                         Home
                     </a>
                     <a class="navbar-item">
-                        Examples
+                        About
                     </a>
-                    <a class="navbar-item">
-                        Documentation
-                    </a>
-                    <span class="navbar-item">
-                      <a class="button is-info is-inverted">
-                        <span class="icon">
-                          <i class="fab fa-github"></i>
-                        </span>
-                        <span>Download</span>
-                      </a>
-                    </span>
                 </div>
             </div>
         </div>

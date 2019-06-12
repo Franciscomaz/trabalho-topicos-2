@@ -4,22 +4,19 @@
         <div class="container">
             <ul>
                 <li class="is-active">
-                    <a>Overview</a>
+                    <a>Home</a>
                 </li>
                 <li>
-                    <a>Modifiers</a>
+                    <a>Pedidos</a>
                 </li>
                 <li>
-                    <a>Grid</a>
+                    <a>Solicitações</a>
                 </li>
                 <li>
-                    <a>Elements</a>
+                    <a>Produtos</a>
                 </li>
                 <li>
-                    <a>Components</a>
-                </li>
-                <li>
-                    <a>Layout</a>
+                    <a>Revendas</a>
                 </li>
             </ul>
         </div>
