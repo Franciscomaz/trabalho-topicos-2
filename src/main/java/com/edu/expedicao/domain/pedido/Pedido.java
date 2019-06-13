@@ -1,4 +1,4 @@
-package com.edu.expedicao.model.pedido;
+package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,10 +19,9 @@ public class Pedido {
         this.produtos = new ArrayList<>();
     }
 
-    public Pedido(Long id, List<Produto> produtos) {
+    public Pedido(final Long id) {
         super();
         this.id = id;
-        this.produtos = produtos;
     }
 
     public List<Produto> getProdutos() {

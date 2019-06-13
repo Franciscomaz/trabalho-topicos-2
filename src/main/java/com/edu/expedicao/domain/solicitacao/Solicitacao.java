@@ -1,7 +1,7 @@
-package com.edu.expedicao.model.solicitacao;
+package com.edu.expedicao.domain.solicitacao;
 
-import com.edu.expedicao.model.pedido.Pedido;
-import com.edu.expedicao.model.revenda.Revenda;
+import com.edu.expedicao.domain.pedido.Pedido;
+import com.edu.expedicao.domain.revenda.Revenda;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

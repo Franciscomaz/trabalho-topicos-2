@@ -8,7 +8,7 @@
 <section class="hero is-primary is-fullheight">
     <%@ include file="../../common/head.jsp" %>
 
-    <div class="hero-body" style="justify-content: center">
+    <div class="hero-body is-content-centered">
         <nav class="panel has-round-corners has-background-white-bis">
                 <p class="panel-heading">
                     Pedidos
@@ -64,8 +64,8 @@
                     </table>
                 </div>
                 <div class="panel-block">
-                    <button class="button is-link">
-                        Novo
+                    <button class="button is-link" data-target="pedidoDetailModal">
+                        <%@ include file="pedido-detail.jsp" %>
                     </button>
                 </div>
             </nav>

@@ -1,4 +1,4 @@
-package com.edu.expedicao.model.revenda;
+package com.edu.expedicao.domain.revenda;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

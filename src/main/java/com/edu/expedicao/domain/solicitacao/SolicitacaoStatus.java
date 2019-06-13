@@ -1,4 +1,4 @@
-package com.edu.expedicao.model.solicitacao;
+package com.edu.expedicao.domain.solicitacao;
 
 public enum SolicitacaoStatus {
 

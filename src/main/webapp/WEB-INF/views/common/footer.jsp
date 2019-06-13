@@ -22,3 +22,4 @@
         </div>
     </nav>
 </div>
+<script type="text/javascript"><%@ include file="../../resources/js/main.js"%></script>

@@ -1,4 +1,4 @@
-package com.edu.expedicao.model.pedido;
+package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
 
