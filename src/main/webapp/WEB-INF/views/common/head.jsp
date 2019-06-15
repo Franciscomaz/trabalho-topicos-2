@@ -8,16 +8,6 @@
                 </a>
                 <span class="navbar-burger burger" data-target="navbarMenuHeroB"></span>
             </div>
-            <div id="navbarMenuHeroB" class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item is-active">
-                        Home
-                    </a>
-                    <a class="navbar-item">
-                        About
-                    </a>
-                </div>
-            </div>
         </div>
     </nav>
 </div>

@@ -5,13 +5,13 @@
     <%@ include file="../../common/header.jsp" %>
 </head>
 <body>
-<section class="hero is-primary is-fullheight">
+<section class="hero is-primary is-bold is-fullheight">
     <%@ include file="../../common/head.jsp" %>
 
     <div class="hero-body is-content-centered">
         <nav class="panel has-round-corners has-background-white-bis">
                 <p class="panel-heading">
-                    Pedidos
+                    Produtos
                 </p>
                 <div class="panel-block">
                     <table class="table is-bordered pricing__table">

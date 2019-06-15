@@ -5,7 +5,7 @@
     <%@ include file="../../common/header.jsp" %>
 </head>
 <body>
-<section class="hero is-primary is-fullheight">
+<section class="hero is-primary is-bold is-fullheight">
     <%@ include file="../../common/head.jsp" %>
 
     <div class="hero-body is-content-centered">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="panel-block">
                     <button class="button is-link" data-target="pedidoDetailModal">
-                        <%@ include file="pedido-detail.jsp" %>
+                        Novo
                     </button>
                 </div>
             </nav>
