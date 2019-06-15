@@ -5,7 +5,7 @@
     <%@ include file="../../common/header.jsp" %>
 </head>
 <body>
-<section class="hero is-primary is-fullheight">
+<section class="hero has-background-white-ter is-fullheight">
     <%@ include file="../../common/head.jsp" %>
 
     <div class="hero-body is-content-centered">
@@ -67,6 +67,7 @@
                     <button class="button modal-button" data-target="produto-detail-modal" aria-haspopup="true">
                         Novo
                     </button>
+                    <%@ include file="produto-detail.jsp" %>
                 </div>
             </nav>
     </div>

@@ -1,6 +1,7 @@
 package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Produto {
@@ -9,6 +10,7 @@ public class Produto {
     @GeneratedValue
     private Long id;
     private String descricao;
+    private BigDecimal valor;
     private String dimensoes;
     private String referencia;
 
@@ -21,11 +23,13 @@ public class Produto {
 
     public Produto(Long id,
                    String descricao,
+                   BigDecimal valor,
                    String dimensoes,
                    Pedido pedido,
                    String referencia) {
         this.id = id;
         this.descricao = descricao;
+        this.valor = valor;
         this.dimensoes = dimensoes;
         this.pedido = pedido;
         this.referencia = referencia;
@@ -41,6 +45,14 @@ public class Produto {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public void setDescricao(String descricao) {

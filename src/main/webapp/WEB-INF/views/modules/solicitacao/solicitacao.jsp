@@ -5,7 +5,7 @@
     <%@ include file="../../common/header.jsp" %>
 </head>
 <body>
-<section class="hero is-info is-fullheight">
+<section class="hero has-background-white-ter is-fullheight">
     <%@ include file="../../common/head.jsp" %>
 
     <div class="hero-body">
