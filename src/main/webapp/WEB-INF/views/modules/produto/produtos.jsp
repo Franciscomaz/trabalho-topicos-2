@@ -17,11 +17,10 @@
                     <table class="table is-bordered pricing__table">
                         <thead>
                         <tr>
-                            <th>Travellers</th>
-                            <th>Standard</th>
-                            <th>Delux</th>
-                            <th>Premium</th>
-                            <th>Luxury</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Dimensões</th>
+                            <th>Referência</th>
                         </tr>
                         </thead>
 
