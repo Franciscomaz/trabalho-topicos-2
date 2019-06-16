@@ -1,3 +1,9 @@
 .is-content-centered {
     justify-content: center;
 }
+
+.button.is-text {
+    text-decoration: none;
+    padding-left: calc(.625em - 1px);
+    padding-right: calc(.625em - 1px);
+}

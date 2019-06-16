@@ -4,6 +4,7 @@ import com.edu.expedicao.application.produto.ProdutoService;
 import com.edu.expedicao.domain.pedido.Produto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,8 +59,9 @@ public class ProdutoController {
         return "redirect:/produtos/" + id + "/details";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public Produto remover(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Produto remover(@PathVariable("id") Long id) {
         return produtoService.remover(produtoService.buscarPeloId(id));
     }
 

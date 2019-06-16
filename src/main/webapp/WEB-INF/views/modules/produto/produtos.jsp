@@ -23,6 +23,7 @@
                         <th>Valor</th>
                         <th>Dimensões</th>
                         <th>Referência</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
 
@@ -33,6 +34,19 @@
                             <td><c:out value="${produto.valor}"/></td>
                             <td><c:out value="${produto.dimensoes}"/></td>
                             <td><c:out value="${produto.referencia}"/></td>
+                            <td>
+                                <a class="button is-small is-text"
+                                   onclick="sendTo('/produtos/' + ${produto.id} + '/details')">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </span>
+                                </a>
+                                <a class="button is-small is-text" onclick="deletarProduto(${produto.id})">
+                                    <span class="icon is-small">
+                                      <i class="fa fa-trash"></i>
+                                    </span>
+                                </a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
