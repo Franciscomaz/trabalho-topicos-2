@@ -6,10 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/produtos")
@@ -21,34 +19,43 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String buscarPeloId(@PathVariable Long id, final Model model) {
-        return "modules/produto/produtos";
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getPaginaDeListagem(final Model model) {
+        final Page<Produto> page = produtoService.buscarComPaginacao(Pageable.unpaged());
+        model.addAttribute("produtos", page.getContent());
+        return new ModelAndView("/modules/produto/produtos", model.asMap());
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String buscarComPaginacao(final Model model) {
-        final Page<Produto> page = produtoService.buscarComPaginacao(Pageable.unpaged());
-        model.addAttribute("produtos", page);
-        return "modules/produto/produtos";
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public ModelAndView getPaginaDeCadastro(final Model model) {
+        model.addAttribute("produto", new Produto());
+        return new ModelAndView("/modules/produto/produto-detail", model.asMap());
+    }
+
+    @RequestMapping(value = "/{id}/details", method = RequestMethod.GET)
+    public ModelAndView getPaginaDeEdicao(@PathVariable Long id, final Model model) {
+        model.addAttribute("produto", produtoService.buscarPeloId(id));
+        return new ModelAndView("/modules/produto/produto-detail", model.asMap());
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Produto criar(@RequestBody final Produto produto) {
-        return produtoService.criar(produto);
+    public String criar(@ModelAttribute("produto") final Produto produto) {
+        produtoService.criar(produto);
+        return "redirect:/produtos/details";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Produto atualizar(@PathVariable Long id, @RequestBody final Produto produto) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String atualizar(@PathVariable Long id, @ModelAttribute("produto") final Produto produto) {
         final Produto old = produtoService.buscarPeloId(id);
 
-        produto.setId(old.getId());
-        produto.setDescricao(old.getDescricao());
-        produto.setValor(old.getValor());
-        produto.setDimensoes(old.getDimensoes());
-        produto.setReferencia(old.getReferencia());
+        old.setDescricao(produto.getDescricao());
+        old.setValor(produto.getValor());
+        old.setDimensoes(produto.getDimensoes());
+        old.setReferencia(produto.getReferencia());
 
-        return produtoService.atualizar(produto);
+        produtoService.atualizar(produto);
+
+        return "redirect:/produtos/" + id + "/details";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

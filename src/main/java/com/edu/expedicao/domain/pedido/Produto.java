@@ -1,6 +1,7 @@
 package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -9,9 +10,15 @@ public class Produto {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull(message = "É necessário informar uma descrição")
     private String descricao;
+
+    @NotNull(message = "É necessário informar o valor")
     private BigDecimal valor;
+
     private String dimensoes;
+
     private String referencia;
 
     @ManyToOne

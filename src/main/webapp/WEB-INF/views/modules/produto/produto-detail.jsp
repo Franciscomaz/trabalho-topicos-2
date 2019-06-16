@@ -1,49 +1,69 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<div id="produto-detail-modal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Cadastrando produto</p>
-            <button class="delete" aria-label="close"></button>
-        </header>
-        <div class="modal-card-body">
+<html>
+<head>
+    <title>Home Page</title>
+    <%@ include file="../../common/header.jsp" %>
+</head>
+<body>
+<section class="hero has-background-white-ter is-fullheight">
+    <%@ include file="../../common/head.jsp" %>
 
-            <div class="field">
-                <label class="label">Descrição</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Descrição" value="descricao">
+    <div class="hero-body is-content-centered">
+
+        <%--@elvariable id="produto" type="com.edu.expedicao.domain.pedido.Produto"--%>
+        <form:form class="panel has-round-corners has-background-white-bis"
+                   action="${produto.id == null ? '/produtos' : '/produtos/'.concat(produto.id)}"
+                   modelAttribute="produto"
+                   method="post">
+            <div class="panel-heading">
+                Cadastrando produto
+            </div>
+            <div class="panel-block">
+                <div class="collumns" style="width: 500px">
+                    <div class="field">
+                        <label class="label">Descrição</label>
+                        <div class="control">
+                            <form:input class="input" path="descricao" type="text" placeholder="Caixa"/>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Valor</label>
+                        <div class="control has-icons-left">
+                            <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
+
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-money"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Dimensões</label>
+                        <div class="control">
+                            <form:input class="input" path="dimensoes" type="text" placeholder="10x10 metros"/>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Referência</label>
+                        <div class="control">
+                            <form:textarea class="textarea" path="referencia" placeholder="Cor azul"/>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="field">
-                <label class="label">Valor</label>
-                <div class="control has-icons-left">
-                    <input class="input" type="number" placeholder="Valor" value="valor">
-
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-money"></i>
-                    </span>
-                </div>
+            <div class="panel-block">
+                <button class="button">
+                    Salvar
+                </button>
             </div>
-
-            <div class="field">
-                <label class="label">Dimensões</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Dimensões" value="dimensoes">
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Referência</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Referência" value="referencia"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <footer class="modal-card-foot">
-            <button class="button is-success" type="submit">Salvar</button>
-            <button class="button">Cancelar</button>
-        </footer>
+        </form:form>
     </div>
-</div>
+
+    <%@ include file="../../common/footer.jsp" %>
+</section>
+</body>
+</html>

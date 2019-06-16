@@ -5,16 +5,16 @@
             <a href="/">Home</a>
         </li>
         <li class="${pageContext.request.servletPath.contains("pedidos.jsp") ? 'is-active' : ''}">
-            <a href="pedidos">Pedidos</a>
+            <a href="/pedidos">Pedidos</a>
         </li>
         <li class="${pageContext.request.servletPath.contains("solicitacoes.jsp") ? 'is-active' : ''}">
-            <a href="solicitacoes">Solicitações</a>
+            <a href="/solicitacoes">Solicitações</a>
         </li>
         <li class="${pageContext.request.servletPath.contains("produtos.jsp") ? 'is-active' : ''}">
-            <a href="produtos">Produtos</a>
+            <a href="/produtos">Produtos</a>
         </li>
         <li class="${pageContext.request.servletPath.contains("revendas.jsp") ? 'is-active' : ''}">
-            <a href="revendas">Revendas</a>
+            <a href="/revendas">Revendas</a>
         </li>
     </ul>
 </div>
