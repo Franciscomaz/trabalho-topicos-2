@@ -62,6 +62,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>kr.pe.kwonnam.jsp</groupId>
+            <artifactId>jsp-template-inheritance</artifactId>
+            <version>0.3.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

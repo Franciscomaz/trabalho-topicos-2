@@ -7,3 +7,10 @@
     padding-left: calc(.625em - 1px);
     padding-right: calc(.625em - 1px);
 }
+
+.has-ellipsis {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

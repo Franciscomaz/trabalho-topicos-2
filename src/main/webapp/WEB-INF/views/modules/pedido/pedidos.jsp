@@ -1,15 +1,9 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<html>
-<head>
-    <title>Home Page</title>
-    <%@ include file="../../common/header.jsp" %>
-</head>
-<body>
-<section class="hero has-background-white-ter is-fullheight">
-    <%@ include file="../../common/head.jsp" %>
-
-    <div class="hero-body is-content-centered">
-        <nav class="panel has-round-corners has-background-white-bis">
+<%@page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
+<layout:extends name="/WEB-INF/views/common/template.jsp">
+    <layout:put block="body">
+        <div class="hero-body is-content-centered">
+            <div class="panel has-round-corners has-background-white-bis">
                 <p class="panel-heading">
                     Pedidos
                 </p>
@@ -68,10 +62,7 @@
                         Novo
                     </button>
                 </div>
-            </nav>
-    </div>
-
-    <%@ include file="../../common/footer.jsp" %>
-</section>
-</body>
-</html>
+            </div>
+        </div>
+    </layout:put>
+</layout:extends>
