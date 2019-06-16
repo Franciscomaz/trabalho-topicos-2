@@ -42,7 +42,7 @@
         </div>
 
         <footer class="modal-card-foot">
-            <button class="button is-success">Salvar</button>
+            <button class="button is-success" type="submit">Salvar</button>
             <button class="button">Cancelar</button>
         </footer>
     </div>
