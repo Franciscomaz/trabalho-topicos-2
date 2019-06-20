@@ -4,6 +4,7 @@ import com.edu.expedicao.domain.pedido.Pedido;
 import com.edu.expedicao.domain.revenda.Revenda;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,10 +16,12 @@ public class Solicitacao {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @NotNull(message = "É necessário informar o pedido")
     private Pedido pedido;
 
     @ManyToOne
     @JoinColumn(name = "Revenda_id")
+    @NotNull(message = "É necessário informar a revenda")
     private Revenda revenda;
 
     private SolicitacaoStatus status;
@@ -28,12 +31,12 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
-    public Solicitacao(Long id,
-                       Pedido pedido,
-                       Revenda revenda,
-                       SolicitacaoStatus status,
-                       LocalDateTime dataHoraInicio,
-                       LocalDateTime dataHoraConclusao) {
+    public Solicitacao(final Long id,
+                       final Pedido pedido,
+                       final Revenda revenda,
+                       final SolicitacaoStatus status,
+                       final LocalDateTime dataHoraInicio,
+                       final LocalDateTime dataHoraConclusao) {
         this.id = id;
         this.pedido = pedido;
         this.revenda = revenda;

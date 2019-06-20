@@ -1,5 +1,5 @@
 <%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<p class="menu-label is-hidden-touch">Navega��o</p>
+<p class="menu-label is-hidden-touch">Navegação</p>
 <ul class="menu-list">
     <li>
         <a href="${pageContext.request.contextPath}/"
@@ -26,6 +26,12 @@
                 </a>
             </li>
         </ul>
+    </li>
+    <li>
+        <a href="${pageContext.request.contextPath}/solicitacoes"
+           class="${requestScope['javax.servlet.forward.request_uri'].contains("/solicitacoes") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fa fa-list"></i></span> Solicitações
+        </a>
     </li>
     <li>
         <a href="${pageContext.request.contextPath}/revendas"

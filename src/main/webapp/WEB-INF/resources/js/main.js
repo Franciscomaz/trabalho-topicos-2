@@ -19,3 +19,12 @@ function deletarRevenda(id) {
         sendTo("/revendas");
     });
 }
+
+function deletarSolicitacao(id) {
+    $.ajax({
+        url: "/solicitacoes/" + id,
+        method: "DELETE"
+    }).done(() => {
+        sendTo("/solicitacoes");
+    });
+}
