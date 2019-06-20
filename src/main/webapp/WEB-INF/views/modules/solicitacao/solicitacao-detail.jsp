@@ -18,18 +18,26 @@
                 <div class="card-content">
                     <div class="collumns">
                         <div class="field">
-                            <label class="label">Descrição</label>
-                            <div class="control">
-                                <form:input class="input" path="revenda" type="text" placeholder="Caixa"/>
+                            <label class="label" for="select-produtos">Revenda</label>
+                            <div class="select">
+                                <select id="select-produtos">
+                                    <c:forEach var="produto" items="${produtos}" varStatus="id">
+                                        <option value="${produto.id}">${produto.descricao}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
 
                             <form:errors path="revenda" cssClass="help is-danger"/>
                         </div>
 
                         <div class="field">
-                            <label class="label">Pedido</label>
-                            <div class="control">
-                                <form:input class="input" path="pedido" type="text" placeholder="10x10 metros"/>
+                            <label class="label" for="select-pedidos">Pedido</label>
+                            <div class="select">
+                                <select id="select-pedidos">
+                                    <c:forEach var="produto" items="${produtos}" varStatus="id">
+                                        <option value="${produto.id}">${produto.descricao}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
 
                             <form:errors path="pedido" cssClass="help is-danger"/>

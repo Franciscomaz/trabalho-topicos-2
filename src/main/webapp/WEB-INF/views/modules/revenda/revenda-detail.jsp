@@ -41,8 +41,7 @@
 
                             <form:errors path="nome" cssClass="help is-danger"/>
                         </div>
-
-
+                    </div>
                 </div>
                 <footer class="card-footer">
                     <div class="card-footer-item">

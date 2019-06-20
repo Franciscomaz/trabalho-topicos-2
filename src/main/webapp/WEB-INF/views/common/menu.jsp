@@ -4,39 +4,29 @@
     <li>
         <a href="${pageContext.request.contextPath}/"
            class="${requestScope['javax.servlet.forward.request_uri'].equals("/") ? 'is-active' : ''}">
-            <span class="icon"><i class="fa fa-home"></i></span> Home
-        </a>
-    </li>
-    <li>
-        <a>
-            <span class="icon"><i class="fa fa-box"></i></span> Produtos
-        </a>
-
-        <ul>
-            <li>
-                <a href="${pageContext.request.contextPath}/produtos"
-                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/produtos") ? 'is-active' : ''}">
-                    <span class="icon is-small"><i class="fa fa-list"></i></span> Listagem
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/produtos/details"
-                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/produtos/details") ? 'is-active' : ''}">
-                    <span class="icon is-small"><i class="fa fa-edit"></i></span> Cadastro
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="${pageContext.request.contextPath}/solicitacoes"
-           class="${requestScope['javax.servlet.forward.request_uri'].contains("/solicitacoes") ? 'is-active' : ''}">
-            <span class="icon is-small"><i class="fa fa-list"></i></span> Solicitações
+            <span class="icon is-small"><i class="fa fa-home"></i></span>
+            <span style="padding-left: 5px">Home</span>
         </a>
     </li>
     <li>
         <a href="${pageContext.request.contextPath}/revendas"
-              class="${requestScope['javax.servlet.forward.request_uri'].equals("/revendas") ? 'is-active' : ''}">
-            <span class="icon is-small"><i class="fa fa-edit"></i></span> Revenda
-       </a>
+           class="${requestScope['javax.servlet.forward.request_uri'].contains("revendas") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fas fa-store-alt"></i></span>
+            <span style="padding-left: 5px">Revendas</span>
+        </a>
+    </li>
+    <li>
+        <a href="${pageContext.request.contextPath}/produtos"
+           class="${requestScope['javax.servlet.forward.request_uri'].contains("produtos") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fas fa-boxes"></i></span>
+            <span style="padding-left: 5px">Produtos</span>
+        </a>
+    </li>
+    <li>
+        <a href="${pageContext.request.contextPath}/solicitacoes"
+           class="${requestScope['javax.servlet.forward.request_uri'].contains("/solicitacoes") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fas fa-dolly-flatbed"></i></span>
+            <span style="padding-left: 5px">Solicitações</span>
+        </a>
     </li>
 </ul>
