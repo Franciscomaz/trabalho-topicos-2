@@ -27,4 +27,10 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a href="${pageContext.request.contextPath}/revendas"
+              class="${requestScope['javax.servlet.forward.request_uri'].equals("/revendas") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fa fa-edit"></i></span> Revenda
+       </a>
+    </li>
 </ul>
