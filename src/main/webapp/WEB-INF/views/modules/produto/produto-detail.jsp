@@ -4,8 +4,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
-        <%--@elvariable id="produto" type="com.edu.expedicao.domain.produto.Produto"--%>
 
+        <%--@elvariable id="produto" type="com.edu.expedicao.domain.produto.Produto"--%>
         <div class="is-flex is-content-centered">
             <form:form class="card has-round-corners"
                        action="${produto.id == null ? '/produtos' : '/produtos/'.concat(produto.id)}"

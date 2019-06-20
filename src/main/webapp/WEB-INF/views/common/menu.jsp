@@ -27,4 +27,24 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a>
+            <span class="icon"><i class="fa fa-box"></i></span> Solicitações
+        </a>
+
+        <ul>
+            <li>
+                <a href="${pageContext.request.contextPath}/solicitacoes"
+                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/solicitacoes") ? 'is-active' : ''}">
+                    <span class="icon is-small"><i class="fa fa-list"></i></span> Listagem
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/solicitacoes/details"
+                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/solicitacoes/details") ? 'is-active' : ''}">
+                    <span class="icon is-small"><i class="fa fa-edit"></i></span> Cadastro
+                </a>
+            </li>
+        </ul>
+    </li>
 </ul>
