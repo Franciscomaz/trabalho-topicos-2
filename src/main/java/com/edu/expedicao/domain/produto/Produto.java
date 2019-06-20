@@ -1,9 +1,10 @@
 package com.edu.expedicao.domain.produto;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -17,16 +18,16 @@ public class Produto {
 
     @NotNull(message = "É necessário informar uma descrição")
     @NotEmpty(message = "É necessário informar uma descrição")
-    @Max(value = 60, message = "Náo é permitido produtos com descrição maior que 60 caracteres")
+    @Length(max = 60, message = "Náo é permitido produtos com descrição maior que 60 caracteres")
     private String descricao;
 
     @NotNull(message = "É necessário informar o valor")
     private BigDecimal valor;
 
-    @Max(value = 60, message = "Náo é permitido produtos com dimensões maiores que 60 caracteres")
+    @Length(max = 60, message = "Não é permitido produtos com dimensões maiores que 60 caracteres")
     private String dimensoes;
 
-    @Max(value = 255, message = "Náo é permitido produtos com referências maiores que 255 caracteres")
+    @Length(max = 255, message = "Não é permitido produtos com referências maiores que 255 caracteres")
     private String referencia;
 
     public Produto() {

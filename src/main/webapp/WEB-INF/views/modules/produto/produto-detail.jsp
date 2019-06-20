@@ -55,6 +55,8 @@
                             <div class="control">
                                 <form:input class="input" path="dimensoes" type="text" placeholder="10x10 metros"/>
                             </div>
+
+                            <form:errors path="dimensoes" cssClass="help is-danger"/>
                         </div>
 
                         <div class="field">
@@ -62,6 +64,8 @@
                             <div class="control">
                                 <form:textarea class="textarea" path="referencia" placeholder="Cor azul"/>
                             </div>
+
+                            <form:errors path="referencia" cssClass="help is-danger"/>
                         </div>
                     </div>
                 </div>

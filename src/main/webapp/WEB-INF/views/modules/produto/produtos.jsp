@@ -22,7 +22,7 @@
 
                     <c:choose>
                         <c:when test="${!produtos.isEmpty()}">
-                            <table class="table">
+                            <table class="table is-bordered">
 
                                 <thead>
                                 <tr>
