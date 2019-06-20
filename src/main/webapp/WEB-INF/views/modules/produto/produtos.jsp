@@ -39,8 +39,11 @@
 
                                     <tr>
                                         <td class="has-ellipsis"><c:out value="${produto.descricao}"/></td>
-                                        <td class="has-ellipsis" align="right"><fmt:formatNumber
-                                                value="${produto.valor}" type="currency" currencySymbol="R$"/></td>
+                                        <td class="has-ellipsis" align="right">
+                                            <fmt:formatNumber value="${produto.valor}"
+                                                              type="currency"
+                                                              currencySymbol="R$"/>
+                                        </td>
                                         <td class="has-ellipsis"><c:out value="${produto.dimensoes}"/></td>
                                         <td class="has-ellipsis"><c:out value="${produto.referencia}"/></td>
                                         <td>
