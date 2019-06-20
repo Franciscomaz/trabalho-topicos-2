@@ -7,8 +7,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/produtos")
@@ -40,13 +43,25 @@ public class ProdutoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String criar(@ModelAttribute("produto") final Produto produto) {
+    public String criar(@Valid @ModelAttribute("produto") final Produto produto,
+                        final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/modules/produto/produto-detail";
+        }
+
         produtoService.criar(produto);
+
         return "redirect:/produtos/details";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String atualizar(@PathVariable Long id, @ModelAttribute("produto") final Produto produto) {
+    public String atualizar(@PathVariable final Long id,
+                            @Valid @ModelAttribute("produto") final Produto produto,
+                            final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/modules/produto/produto-detail";
+        }
+
         final Produto old = produtoService.buscarPeloId(id);
 
         old.setDescricao(produto.getDescricao());

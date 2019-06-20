@@ -21,6 +21,8 @@
                             <div class="control">
                                 <form:input class="input" path="descricao" type="text" placeholder="Caixa"/>
                             </div>
+
+                            <form:errors path="descricao" cssClass="help is-danger"/>
                         </div>
 
                         <div class="field">
@@ -29,9 +31,11 @@
                                 <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
 
                                 <span class="icon is-small is-left">
-                                <i class="fa fa-money"></i>
-                            </span>
+                                    <i class="fa fa-money"></i>
+                                </span>
                             </div>
+
+                            <form:errors path="valor" cssClass="help is-danger"/>
                         </div>
 
                         <div class="field">

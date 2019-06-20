@@ -1,6 +1,7 @@
 package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ public class Produto {
     private Long id;
 
     @NotNull(message = "É necessário informar uma descrição")
+    @NotEmpty(message = "É necessário informar uma descrição")
     private String descricao;
 
     @NotNull(message = "É necessário informar o valor")
