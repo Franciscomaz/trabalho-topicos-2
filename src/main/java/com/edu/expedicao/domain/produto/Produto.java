@@ -1,6 +1,9 @@
-package com.edu.expedicao.domain.pedido;
+package com.edu.expedicao.domain.produto;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -14,33 +17,30 @@ public class Produto {
 
     @NotNull(message = "É necessário informar uma descrição")
     @NotEmpty(message = "É necessário informar uma descrição")
+    @Max(value = 60, message = "Náo é permitido produtos com descrição maior que 60 caracteres")
     private String descricao;
 
     @NotNull(message = "É necessário informar o valor")
     private BigDecimal valor;
 
+    @Max(value = 60, message = "Náo é permitido produtos com dimensões maiores que 60 caracteres")
     private String dimensoes;
 
+    @Max(value = 255, message = "Náo é permitido produtos com referências maiores que 255 caracteres")
     private String referencia;
-
-    @ManyToOne
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
 
     public Produto() {
     }
 
-    public Produto(Long id,
-                   String descricao,
-                   BigDecimal valor,
-                   String dimensoes,
-                   Pedido pedido,
-                   String referencia) {
+    public Produto(final Long id,
+                   final String descricao,
+                   final BigDecimal valor,
+                   final String dimensoes,
+                   final String referencia) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
         this.dimensoes = dimensoes;
-        this.pedido = pedido;
         this.referencia = referencia;
     }
 
@@ -74,14 +74,6 @@ public class Produto {
 
     public void setDimensoes(String dimensoes) {
         this.dimensoes = dimensoes;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
     public String getReferencia() {

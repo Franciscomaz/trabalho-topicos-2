@@ -1,7 +1,7 @@
 package com.edu.expedicao.resources;
 
 import com.edu.expedicao.application.produto.ProdutoService;
-import com.edu.expedicao.domain.pedido.Produto;
+import com.edu.expedicao.domain.produto.Produto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;

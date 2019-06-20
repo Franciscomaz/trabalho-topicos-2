@@ -1,6 +1,6 @@
 package com.edu.expedicao.application.produto;
 
-import com.edu.expedicao.domain.pedido.Produto;
+import com.edu.expedicao.domain.produto.Produto;
 import com.edu.expedicao.infrastructure.repositories.ProdutoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

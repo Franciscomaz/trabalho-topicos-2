@@ -4,7 +4,7 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
-        <%--@elvariable id="produto" type="com.edu.expedicao.domain.pedido.Produto"--%>
+        <%--@elvariable id="produto" type="com.edu.expedicao.domain.produto.Produto"--%>
 
         <div class="is-flex is-content-centered">
             <form:form class="card has-round-corners"
