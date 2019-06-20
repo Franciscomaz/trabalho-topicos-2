@@ -1,20 +1,30 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<div class="container">
-    <ul>
-        <li class="${requestScope['javax.servlet.forward.request_uri'].equals("/") ? 'is-active' : ''}">
-            <a href="${pageContext.request.contextPath}/">Home</a>
-        </li>
-        <li class="${requestScope['javax.servlet.forward.request_uri'].contains("pedidos") ? 'is-active' : ''}">
-            <a href="${pageContext.request.contextPath}/pedidos">Pedidos</a>
-        </li>
-        <li class="${requestScope['javax.servlet.forward.request_uri'].contains("solicitacoes") ? 'is-active' : ''}">
-            <a href="${pageContext.request.contextPath}/solicitacoes">Solicitações</a>
-        </li>
-        <li class="${requestScope['javax.servlet.forward.request_uri'].contains("produtos") ? 'is-active' : ''}">
-            <a href="${pageContext.request.contextPath}/produtos">Produtos</a>
-        </li>
-        <li class="${requestScope['javax.servlet.forward.request_uri'].contains("revendas") ? 'is-active' : ''}">
-            <a href="${pageContext.request.contextPath}/revendas">Revendas</a>
-        </li>
-    </ul>
-</div>
+<p class="menu-label is-hidden-touch">Navegação</p>
+<ul class="menu-list">
+    <li>
+        <a href="${pageContext.request.contextPath}/"
+           class="${requestScope['javax.servlet.forward.request_uri'].equals("/") ? 'is-active' : ''}">
+            <span class="icon"><i class="fa fa-home"></i></span> Home
+        </a>
+    </li>
+    <li>
+        <a>
+            <span class="icon"><i class="fa fa-box"></i></span> Produtos
+        </a>
+
+        <ul>
+            <li>
+                <a href="${pageContext.request.contextPath}/produtos"
+                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/produtos") ? 'is-active' : ''}">
+                    <span class="icon is-small"><i class="fa fa-list"></i></span> Listagem
+                </a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/produtos/details"
+                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/produtos/details") ? 'is-active' : ''}">
+                    <span class="icon is-small"><i class="fa fa-edit"></i></span> Cadastro
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

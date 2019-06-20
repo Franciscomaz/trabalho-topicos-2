@@ -4,18 +4,19 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
-        <div class="hero-body is-content-centered">
+        <%--@elvariable id="produto" type="com.edu.expedicao.domain.pedido.Produto"--%>
 
-                <%--@elvariable id="produto" type="com.edu.expedicao.domain.pedido.Produto"--%>
-            <form:form class="panel has-round-corners has-background-white-bis"
+        <div class="is-flex is-content-centered">
+            <form:form class="card has-round-corners"
                        action="${produto.id == null ? '/produtos' : '/produtos/'.concat(produto.id)}"
                        modelAttribute="produto"
-                       method="post">
-                <div class="panel-heading">
-                        ${produto.id == null ? 'Cadastrando produto' : 'Editando produto'}
+                       method="post"
+                       style="min-width: 600px">
+                <div class="card-header">
+                    <p class="card-header-title">${produto.id == null ? 'Cadastrando produto' : 'Editando produto'}</p>
                 </div>
-                <div class="panel-block">
-                    <div class="collumns" style="width: 500px">
+                <div class="card-content">
+                    <div class="collumns">
                         <div class="field">
                             <label class="label">Descrição</label>
                             <div class="control">
@@ -64,12 +65,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-block">
-                    <button class="button">
-                        Salvar
-                    </button>
-                </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item">
+                        <button class="button is-text has-text-link">Salvar</button>
+                    </div>
+                    <div class="card-footer-item">
+                        <button class="button is-text" type="button" onclick="sendTo('/produtos')">Voltar</button>
+                    </div>
+                </footer>
             </form:form>
+
         </div>
     </layout:put>
 </layout:extends>

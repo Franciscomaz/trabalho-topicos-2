@@ -5,16 +5,22 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
-        <div class="hero-body is-content-centered">
-            <div class="panel has-round-corners has-background-white-bis">
-                <p class="panel-heading">
-                    Produtos
-                </p>
-                <div class="panel-block" style="min-width: 500px">
-
+        <div class="is-flex is-content-centered">
+            <div class="card has-round-corners">
+                <div class="card-header">
+                    <p class="card-header-title">Produtos</p>
+                    <div href="#" class="card-header-icon">
+                        <button class="button is-text" onclick="sendTo('produtos/details')">
+                            <span class="icon has-text-link">
+                              <i class="fas fa-plus"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
                     <c:choose>
                         <c:when test="${!produtos.isEmpty()}">
-                            <table class="table is-bordered pricing__table" style="min-width: 500px">
+                            <table class="table is-bordered pricing__table">
                                 <thead>
                                 <tr>
                                     <th>Descrição</th>
@@ -38,16 +44,16 @@
                                         <td>
                                             <a class="button is-small is-text"
                                                onclick="sendTo('/produtos/' + ${produto.id} + '/details')">
-                                    <span class="icon is-small">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </span>
+                                                <span class="icon is-small">
+                                                    <i class="fa fa-edit"></i>
+                                                </span>
                                             </a>
                                             <a class="button modal-button is-small is-text"
                                                data-target="modal-confirmar-remover"
                                                aria-haspopup="true">
-                                    <span class="icon is-small">
-                                      <i class="fa fa-trash"></i>
-                                    </span>
+                                                <span class="icon is-small">
+                                                  <i class="fa fa-trash"></i>
+                                                </span>
                                             </a>
                                         </td>
                                     </tr>
@@ -83,12 +89,6 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-                <div class="panel-block">
-                    <button class="button" onclick="sendTo('produtos/details')">
-                        Novo
-                    </button>
-                </div>
-
             </div>
         </div>
     </layout:put>

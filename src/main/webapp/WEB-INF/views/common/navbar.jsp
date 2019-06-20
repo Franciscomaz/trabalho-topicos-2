@@ -1,12 +1,21 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<div class="hero-head has-background-white has-shadow">
-    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-        <div class="navbar-item">
-            <a class="button is-text" onclick="sendTo(document.referrer)">
-                <span class="icon">
-                  <i class="fa fa-arrow-left"></i>
-                </span>
+<nav class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/">
+                Expedição
             </a>
         </div>
-    </nav>
-</div>
+        <label for="menu-toggle" class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <input type="checkbox" id="menu-toggle" class="is-hidden"/>
+        <div class="navbar-end navbar-menu">
+            <a class="navbar-item is-tab is-hidden-tablet">
+                <span class="icon"><i class="fa fa-home"></i></span> Home
+            </a>
+        </div>
+    </div>
+</nav>
