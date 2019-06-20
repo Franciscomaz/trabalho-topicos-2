@@ -1,6 +1,7 @@
 package com.edu.expedicao.resources;
 
 import com.edu.expedicao.application.produto.ProdutoService;
+import com.edu.expedicao.application.revenda.RevendaService;
 import com.edu.expedicao.application.solicitacao.SolicitacaoService;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
 import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
@@ -19,10 +20,14 @@ import javax.validation.Valid;
 @RequestMapping("/solicitacoes")
 public class SolicitacaoController {
 
+    private final RevendaService revendaService;
     private final ProdutoService produtoService;
     private final SolicitacaoService solicitacaoService;
 
-    public SolicitacaoController(final ProdutoService produtoService, final SolicitacaoService solicitacaoService) {
+    public SolicitacaoController(final RevendaService revendaService,
+                                 final ProdutoService produtoService,
+                                 final SolicitacaoService solicitacaoService) {
+        this.revendaService = revendaService;
         this.produtoService = produtoService;
         this.solicitacaoService = solicitacaoService;
     }
@@ -31,6 +36,7 @@ public class SolicitacaoController {
     public ModelAndView getPaginaDeListagem(final Model model) {
         final Page<Solicitacao> page = solicitacaoService.buscarComPaginacao(Pageable.unpaged());
         model.addAttribute("solicitacoes", page.getContent());
+        model.addAttribute("revendas", revendaService.buscarTodos());
         model.addAttribute("produtos", produtoService.buscarTodos());
         model.addAttribute("statuses", SolicitacaoStatus.values());
         return new ModelAndView("/modules/solicitacao/solicitacoes", model.asMap());
@@ -39,6 +45,7 @@ public class SolicitacaoController {
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public ModelAndView getPaginaDeCadastro(final Model model) {
         model.addAttribute("solicitacao", new Solicitacao());
+        model.addAttribute("revendas", revendaService.buscarTodos());
         model.addAttribute("produtos", produtoService.buscarTodos());
         model.addAttribute("statuses", SolicitacaoStatus.values());
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());

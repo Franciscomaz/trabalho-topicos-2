@@ -2,7 +2,6 @@ package com.edu.expedicao.resources;
 
 import com.edu.expedicao.application.revenda.RevendaService;
 import com.edu.expedicao.domain.revenda.Revenda;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -53,7 +52,7 @@ public class RevendaController {
 
         revendaService.criar(revenda);
 
-        return "redirect:/revenda/details";
+        return "redirect:/revendas/details";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
