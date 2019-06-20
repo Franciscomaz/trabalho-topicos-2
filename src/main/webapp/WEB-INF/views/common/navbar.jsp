@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <nav class="navbar has-shadow">
     <div class="container">
         <div class="navbar-start">
             <a class="navbar-item" href="/">
-                Expedição
+                ExpediÃ§Ã£o
             </a>
         </div>
         <label for="menu-toggle" class="navbar-toggle">

@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <head>
-    <title>Expedição</title>
+    <title>ExpediÃ§Ã£o</title>
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
           crossorigin="anonymous">

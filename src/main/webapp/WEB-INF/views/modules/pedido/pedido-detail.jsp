@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <div id="pedidoDetailModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">

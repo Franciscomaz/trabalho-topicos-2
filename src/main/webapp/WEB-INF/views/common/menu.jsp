@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<p class="menu-label is-hidden-touch">Navegação</p>
+<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<p class="menu-label is-hidden-touch">Navegaï¿½ï¿½o</p>
 <ul class="menu-list">
     <li>
         <a href="${pageContext.request.contextPath}/"

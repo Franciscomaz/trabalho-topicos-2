@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
         <div class="is-flex is-content-centered">
@@ -26,11 +26,11 @@
 
                                 <thead>
                                 <tr>
-                                    <th>Descrição</th>
+                                    <th>DescriÃ§Ã£o</th>
                                     <th>Valor</th>
-                                    <th>Dimensões</th>
-                                    <th>Referência</th>
-                                    <th>Ações</th>
+                                    <th>DimensÃµes</th>
+                                    <th>ReferÃªncia</th>
+                                    <th>AÃ§Ãµes</th>
                                 </tr>
                                 </thead>
 
@@ -64,7 +64,7 @@
                                         </td>
                                     </tr>
 
-                                    <!-- Modal de confirmação da remoção do produto -->
+                                    <!-- Modal de confirmaÃ§Ã£o da remoÃ§Ã£o do produto -->
                                     <div id="modal-confirmar-remover" class="modal">
                                         <div class="modal-background"></div>
                                         <div class="modal-card animation-content">
@@ -73,9 +73,9 @@
                                                 <p class="modal-card-title">Removendo produto</p></header>
 
                                             <section class="modal-card-body">
-                                                <p>Você tem certeza que deseja <b>remover</b> o produto
+                                                <p>VocÃª tem certeza que deseja <b>remover</b> o produto
                                                     <b>${produto.descricao}</b> ?</p>
-                                                <p class="is-muted">Essa ação não pode ser desfeita.</p>
+                                                <p class="is-muted">Essa aÃ§Ã£o nÃ£o pode ser desfeita.</p>
                                             </section>
 
                                             <footer class="modal-card-foot">

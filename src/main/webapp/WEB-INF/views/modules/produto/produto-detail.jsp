@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
-<%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
         <%--@elvariable id="produto" type="com.edu.expedicao.domain.produto.Produto"--%>
@@ -18,7 +18,7 @@
                 <div class="card-content">
                     <div class="collumns">
                         <div class="field">
-                            <label class="label">Descrição</label>
+                            <label class="label">DescriÃ§Ã£o</label>
                             <div class="control">
                                 <form:input class="input" path="descricao" type="text" placeholder="Caixa"/>
                             </div>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Dimensões</label>
+                            <label class="label">DimensÃµes</label>
                             <div class="control">
                                 <form:input class="input" path="dimensoes" type="text" placeholder="10x10 metros"/>
                             </div>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="field">
-                            <label class="label">Referência</label>
+                            <label class="label">ReferÃªncia</label>
                             <div class="control">
                                 <form:textarea class="textarea" path="referencia" placeholder="Cor azul"/>
                             </div>
