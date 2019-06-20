@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
@@ -27,12 +28,23 @@
 
                         <div class="field">
                             <label class="label">Valor</label>
-                            <div class="control has-icons-left">
-                                <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
 
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-money"></i>
-                                </span>
+                            <div class="field has-addons">
+
+                                <p class="control">
+                                    <a class="button is-static">
+                                        R$
+                                    </a>
+                                </p>
+
+                                <div class="control has-icons-right is-expanded">
+                                    <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
+
+                                    <span class="icon is-small is-right">
+                                        <i class="fa fa-money"></i>
+                                    </span>
+                                </div>
+
                             </div>
 
                             <form:errors path="valor" cssClass="help is-danger"/>
