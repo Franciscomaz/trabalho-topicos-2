@@ -1,5 +1,5 @@
 <%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<p class="menu-label is-hidden-touch">Navega��o</p>
+<p class="menu-label is-hidden-touch">Navegação</p>
 <ul class="menu-list">
     <li>
         <a href="${pageContext.request.contextPath}/"
@@ -28,23 +28,9 @@
         </ul>
     </li>
     <li>
-        <a>
-            <span class="icon"><i class="fa fa-box"></i></span> Solicitações
+        <a href="${pageContext.request.contextPath}/solicitacoes"
+           class="${requestScope['javax.servlet.forward.request_uri'].contains("/solicitacoes") ? 'is-active' : ''}">
+            <span class="icon is-small"><i class="fa fa-list"></i></span> Solicitações
         </a>
-
-        <ul>
-            <li>
-                <a href="${pageContext.request.contextPath}/solicitacoes"
-                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/solicitacoes") ? 'is-active' : ''}">
-                    <span class="icon is-small"><i class="fa fa-list"></i></span> Listagem
-                </a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/solicitacoes/details"
-                   class="${requestScope['javax.servlet.forward.request_uri'].equals("/solicitacoes/details") ? 'is-active' : ''}">
-                    <span class="icon is-small"><i class="fa fa-edit"></i></span> Cadastro
-                </a>
-            </li>
-        </ul>
     </li>
 </ul>
