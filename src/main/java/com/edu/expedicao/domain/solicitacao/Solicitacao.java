@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Solicitacao {
@@ -108,5 +109,9 @@ public class Solicitacao {
 
     public void setDataHoraConclusao(LocalDateTime dataHoraConclusao) {
         this.dataHoraConclusao = dataHoraConclusao;
+    }
+
+    public String getDataHoraInicioFormatado() {
+        return getDataHoraInicio().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

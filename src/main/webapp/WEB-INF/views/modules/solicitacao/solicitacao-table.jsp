@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <c:choose>
@@ -21,7 +20,7 @@
                 <tr>
                     <td class="has-ellipsis">${solicitacao.revenda.nome}</td>
                     <td class="has-ellipsis">${solicitacao.status.descricao}</td>
-                    <td class="has-ellipsis">${solicitacao.dataHoraInicio}</td>
+                    <td class="has-ellipsis">${solicitacao.dataHoraInicioFormatado}</td>
                     <td>
                         <a class="button is-small is-text"
                            onclick="sendTo('/solicitacoes/' + ${solicitacao.id} + '/details')">
