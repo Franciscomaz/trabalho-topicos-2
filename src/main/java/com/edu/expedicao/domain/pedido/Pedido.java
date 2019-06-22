@@ -1,6 +1,7 @@
 package com.edu.expedicao.domain.pedido;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,13 @@ public class Pedido {
         super();
         this.id = id;
         this.dataPedido = dataPedido;
+    }
+
+    public BigDecimal getValorTotal() {
+        return getProdutos().stream()
+                .map(PedidoProduto::getValorTotal)
+                .reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO);
     }
 
     public List<PedidoProduto> getProdutos() {

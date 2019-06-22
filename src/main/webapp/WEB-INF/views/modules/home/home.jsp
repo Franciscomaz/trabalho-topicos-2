@@ -23,14 +23,14 @@
                         <div class="title">${quantidadeSolicitacoesEmAberto}</div>
                     </div>
                 </div>
-                <div class="column is-half">
-                    <div class="card">
+                <div class="column is-one-third" style="width: 490px">
+                    <div class="card has-content-centered">
 
                         <div class="card-header">
                             <div class="card-header-title">Últimas solicitações</div>
                         </div>
 
-                        <div class="card-content">
+                        <div class="card-content is-flex is-content-centered">
                             <c:set var="solicitacoes" value="${ultimasSolicitacoes}" scope="request"/>
                             <jsp:include page="../solicitacao/solicitacao-table.jsp"/>
                         </div>

@@ -53,6 +53,10 @@ public class PedidoProduto {
         this.valorUnitario = valorUnitario;
     }
 
+    public BigDecimal getValorTotal() {
+        return valorUnitario.multiply(BigDecimal.valueOf(quantidade));
+    }
+
     public BigDecimal valorReferencia() {
         return produto.getValor();
     }

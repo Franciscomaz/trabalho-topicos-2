@@ -31,7 +31,7 @@ public class HomeController {
         model.addAttribute("totalProdutos", produtoService.totalDeProdutos());
         model.addAttribute("quantidadeSolicitacoesEmAberto", solicitacaoService.quantidadeSolicitacoesEmAberto());
 
-        final PageRequest pageRequest = PageRequest.of(0, 5, Sort.by(Sort.Order.desc("dataHoraInicio")));
+        final PageRequest pageRequest = PageRequest.of(0, 5, Sort.by(Sort.Order.desc("id")));
         model.addAttribute("ultimasSolicitacoes", solicitacaoService.buscarComPaginacao("", pageRequest).getContent());
 
         return new ModelAndView("modules/home/home", model.asMap());

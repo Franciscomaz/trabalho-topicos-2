@@ -23,7 +23,7 @@
                     <td class="has-ellipsis">${solicitacao.dataHoraInicioFormatado}</td>
                     <td>
                         <a class="button is-small is-text"
-                           onclick="sendTo('/solicitacoes/' + ${solicitacao.id} + '/details')">
+                           onclick="sendTo('/solicitacoes/' + ${solicitacao.id} + '/visualizar')">
                             <span class="icon is-small">
                                 <i class="fas fa-eye"></i>
                             </span>

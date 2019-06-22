@@ -47,6 +47,12 @@ public class SolicitacaoController {
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
     }
 
+    @RequestMapping(value = "/{id}/visualizar", method = RequestMethod.GET)
+    public ModelAndView getPaginaDeVisualizacao(@PathVariable Long id, final Model model) {
+        model.addAttribute("solicitacao", solicitacaoService.buscarPeloId(id));
+        return new ModelAndView("/modules/solicitacao/solicitacao-visualizacao", model.asMap());
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
                               final BindingResult bindingResult,

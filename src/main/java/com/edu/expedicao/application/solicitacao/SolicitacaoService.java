@@ -81,6 +81,7 @@ public class SolicitacaoService {
         solicitacao.setPedido(novoPedido);
         solicitacao.setDataHoraInicio(LocalDateTime.now());
         solicitacao.setStatus(SolicitacaoStatus.EM_ESPERA);
+        solicitacao.setObservacao(novaSolicitacao.getObservacao());
 
         return this.solicitacaoRepository.save(solicitacao);
     }

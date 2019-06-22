@@ -110,7 +110,6 @@
                 </footer>
 
             </form:form>
-
         </div>
     </layout:put>
 </layout:extends>

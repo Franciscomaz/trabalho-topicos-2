@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -69,6 +70,10 @@ public class Solicitacao {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    public BigDecimal getValorTotal() {
+        return getPedido().getValorTotal();
     }
 
     public Revenda getRevenda() {
