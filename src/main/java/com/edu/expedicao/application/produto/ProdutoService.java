@@ -49,4 +49,8 @@ public class ProdutoService {
         this.produtoRepository.delete(produto);
         return produto;
     }
+
+    public Long totalDeProdutos() {
+        return produtoRepository.count();
+    }
 }

@@ -35,67 +35,56 @@
                         <div class="is-flex" style="justify-content: space-between">
                             <div class="label">Pedido</div>
                             <div>
-                                <button class="button is-text" type="button" onclick="addTableRow()">
+                                <a class="button is-text">
                                     <span class="icon has-text-link">
                                       <i class="fas fa-plus"></i>
                                     </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
 
-                        <c:choose>
-                            <c:when test="${!solicitacao.pedido.produtos.isEmpty()}">
-                                <table id="table-pedidos-produtos" class="table is-bordered is-fullwidth">
+                        <table id="table-pedidos-produtos" class="table is-bordered is-fullwidth">
 
-                                    <thead>
-                                    <tr>
-                                        <th>Produto</th>
-                                        <th>Quantidade</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
+                            <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                            </thead>
 
-                                    <tbody>
-                                    <c:forEach items="${solicitacao.pedido.produtos}" varStatus="status">
-                                        <c:set var="index" value="status.index"/>
+                            <tbody>
 
-                                        <tr id="cell-produto-solicitacao-${index}}">
-                                            <td class="has-ellipsis">
-                                                <div class="select is-fullwidth">
-                                                    <form:select id="select-produtos"
-                                                                 path="pedido.produtos[${index}].produtoId">
-                                                        <c:forEach var="produto" items="${produtos}">
-                                                            <option value="${produto.id}">${produto.descricao}</option>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                            </td>
+                            <tr id="cell-produto-solicitacao-0}">
+                                <td class="has-ellipsis">
+                                    <div class="select is-fullwidth">
+                                        <form:select id="select-produtos"
+                                                     path="pedido.produtos[0].produtoId">
+                                            <c:forEach var="produto" items="${produtos}">
+                                                <option value="${produto.id}">${produto.descricao}</option>
+                                            </c:forEach>
+                                        </form:select>
+                                    </div>
+                                </td>
 
-                                            <td class="has-ellipsis" width="30px">
-                                                <form:input cssClass="input" path="pedido.produtos[${index}].quantidade"
-                                                            type="number"/>
-                                            </td>
+                                <td class="has-ellipsis" width="30px">
+                                    <form:input cssClass="input" path="pedido.produtos[0].quantidade"
+                                                type="number"/>
+                                </td>
 
-                                            <td width="5px">
-                                                <a class="button is-small is-text" onclick="removeTableRow(${index})">
-                                            <span class="icon is-small">
-                                              <i class="fa fa-trash"></i>
-                                            </span>
-                                                </a>
-                                            </td>
+                                <td width="5px">
+                                    <a class="button is-small is-text" onclick="removeTableRow(0)">
+                                    <span class="icon is-small">
+                                      <i class="fa fa-trash"></i>
+                                    </span>
+                                    </a>
+                                </td>
 
-                                        </tr>
-                                    </c:forEach>
+                            </tr>
 
-                                    </tbody>
+                            </tbody>
 
-                                </table>
-                            </c:when>
-
-                            <c:otherwise>
-                                <p class="has-no-content has-text-centered">Nenhum produto adicionado.</p>
-                            </c:otherwise>
-                        </c:choose>
+                        </table>
 
                         <form:errors path="pedido" cssClass="help is-danger"/>
                     </div>

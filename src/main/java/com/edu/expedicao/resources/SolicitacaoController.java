@@ -47,18 +47,6 @@ public class SolicitacaoController {
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
     }
 
-
-    @RequestMapping(value = "/produtos", method = RequestMethod.POST)
-    public ModelAndView adicionarProduto(@ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao, Model model) {
-        novaSolicitacao
-                .getPedido()
-                .addProduto();
-
-        model.addAttribute("solicitacao", novaSolicitacao);
-
-        return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
                               final BindingResult bindingResult,

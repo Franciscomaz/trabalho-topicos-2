@@ -50,4 +50,8 @@ public class RevendaService {
         this.revendaRepository.delete(revenda);
         return revenda;
     }
+
+    public Long totalDeRevendas() {
+        return revendaRepository.count();
+    }
 }

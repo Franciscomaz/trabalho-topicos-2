@@ -93,4 +93,8 @@ public class SolicitacaoService {
         this.solicitacaoRepository.delete(solicitacao);
         return solicitacao;
     }
+
+    public Integer quantidadeSolicitacoesEmAberto() {
+        return this.solicitacaoRepository.quantidadeEmAberto();
+    }
 }
