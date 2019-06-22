@@ -25,8 +25,9 @@ public class RevendaController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getPaginaDeListagem(final Model model) {
-        final Page<Revenda> page = revendaService.buscarComPaginacao(Pageable.unpaged());
+    public ModelAndView getPaginaDeListagem(final Model model,
+                                            @RequestParam(defaultValue = "") final String filter) {
+        final Page<Revenda> page = revendaService.buscarComPaginacao(filter, Pageable.unpaged());
         model.addAttribute("revendas", page.getContent());
         return new ModelAndView("/modules/revenda/revenda", model.asMap());
     }

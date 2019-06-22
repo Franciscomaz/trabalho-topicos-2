@@ -8,7 +8,22 @@
             <div class="card">
 
                 <div class="card-header">
-                    <p class="card-header-title">Solicitações</p>
+                    <div class="card-header-title">Solicitações</div>
+
+                    <div class="card-header-icon">
+                        <form class="control has-icons-left">
+                            <input id="input-search-solicitacao"
+                                   class="input is-small"
+                                   name="filter"
+                                   type="text"
+                                   placeholder="search">
+
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
+                        </form>
+                    </div>
+
                     <div class="card-header-icon">
                         <button class="button is-text" onclick="sendTo('solicitacoes/details')">
                             <span class="icon has-text-link">
@@ -91,7 +106,7 @@
                             </table>
                         </c:when>
                         <c:otherwise>
-                            <p class="has-no-content">Nenhuma solicitação encontrada.</p>
+                            <p class="has-no-content has-text-centered">Nenhuma solicitação encontrada.</p>
                         </c:otherwise>
                     </c:choose>
 

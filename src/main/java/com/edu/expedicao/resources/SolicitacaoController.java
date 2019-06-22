@@ -5,7 +5,6 @@ import com.edu.expedicao.application.revenda.RevendaService;
 import com.edu.expedicao.application.solicitacao.NovaSolicitacao;
 import com.edu.expedicao.application.solicitacao.SolicitacaoService;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
-import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -34,12 +33,9 @@ public class SolicitacaoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getPaginaDeListagem(final Model model) {
-        final Page<Solicitacao> page = solicitacaoService.buscarComPaginacao(Pageable.unpaged());
+    public ModelAndView getPaginaDeListagem(final Model model, @RequestParam(defaultValue = "") final String filter) {
+        final Page<Solicitacao> page = solicitacaoService.buscarComPaginacao(filter, Pageable.unpaged());
         model.addAttribute("solicitacoes", page.getContent());
-        model.addAttribute("revendas", revendaService.buscarTodos());
-        model.addAttribute("produtos", produtoService.buscarTodos());
-        model.addAttribute("statuses", SolicitacaoStatus.values());
         return new ModelAndView("/modules/solicitacao/solicitacoes", model.asMap());
     }
 
@@ -48,7 +44,6 @@ public class SolicitacaoController {
         model.addAttribute("solicitacao", new NovaSolicitacao());
         model.addAttribute("revendas", revendaService.buscarTodos());
         model.addAttribute("produtos", produtoService.buscarTodos());
-        model.addAttribute("statuses", SolicitacaoStatus.values());
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
     }
 

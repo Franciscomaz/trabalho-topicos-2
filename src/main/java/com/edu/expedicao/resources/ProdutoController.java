@@ -24,8 +24,9 @@ public class ProdutoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getPaginaDeListagem(final Model model) {
-        final Page<Produto> page = produtoService.buscarComPaginacao(Pageable.unpaged());
+    public ModelAndView getPaginaDeListagem(@RequestParam(defaultValue = "") String filter,
+                                            final Model model) {
+        final Page<Produto> page = produtoService.buscarComPaginacao(filter, Pageable.unpaged());
         model.addAttribute("produtos", page.getContent());
         return new ModelAndView("/modules/produto/produtos", model.asMap());
     }

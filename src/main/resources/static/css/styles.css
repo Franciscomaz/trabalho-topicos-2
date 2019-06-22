@@ -17,6 +17,7 @@
 
 .has-no-content {
     padding: 10px;
+    justify-content: center;
 }
 
 #app {

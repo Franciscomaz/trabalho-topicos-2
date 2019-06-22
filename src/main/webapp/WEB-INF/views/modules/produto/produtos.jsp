@@ -1,14 +1,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
-<%@page  pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
         <div class="is-flex is-content-centered">
             <div class="card">
 
                 <div class="card-header">
-                    <p class="card-header-title">Produtos</p>
+                    <div class="card-header-title">Produtos</div>
+
+                    <div class="card-header-icon">
+                        <form class="control has-icons-left">
+                            <input id="input-search-produto"
+                                   class="input is-small"
+                                   name="filter"
+                                   type="text"
+                                   placeholder="search">
+
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
+                        </form>
+                    </div>
+
                     <div class="card-header-icon">
                         <button class="button is-text" onclick="sendTo('produtos/details')">
                             <span class="icon has-text-link">
@@ -98,7 +113,7 @@
                             </table>
                         </c:when>
                         <c:otherwise>
-                            <p class="has-no-content">Nenhum produto encontrado.</p>
+                            <p class="has-no-content has-text-centered">Nenhum produto encontrado.</p>
                         </c:otherwise>
                     </c:choose>
 

@@ -5,9 +5,12 @@ import com.edu.expedicao.application.revenda.RevendaService;
 import com.edu.expedicao.domain.pedido.Pedido;
 import com.edu.expedicao.domain.pedido.PedidoProduto;
 import com.edu.expedicao.domain.produto.Produto;
+import com.edu.expedicao.domain.revenda.Revenda;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
 import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
 import com.edu.expedicao.infrastructure.repositories.SolicitacaoRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -38,8 +41,20 @@ public class SolicitacaoService {
         return this.solicitacaoRepository.findAll();
     }
 
-    public Page<Solicitacao> buscarComPaginacao(final Pageable pageable) {
-        return this.solicitacaoRepository.findAll(pageable);
+    public Page<Solicitacao> buscarComPaginacao(String filter, final Pageable pageable) {
+        final Revenda revendaFilter = new Revenda();
+        revendaFilter.setCnpj(filter);
+        revendaFilter.setNome(filter);
+
+        final Solicitacao solicitacaoFilter = new Solicitacao();
+        solicitacaoFilter.setRevenda(revendaFilter);
+
+        final ExampleMatcher matcher = ExampleMatcher.matchingAny()
+                .withMatcher("renvenda.nome", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("renvenda.cnpj", ExampleMatcher.GenericPropertyMatcher::contains);
+
+
+        return this.solicitacaoRepository.findAll(Example.of(solicitacaoFilter, matcher), pageable);
     }
 
     public Solicitacao criar(final NovaSolicitacao novaSolicitacao) {

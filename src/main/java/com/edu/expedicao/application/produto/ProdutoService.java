@@ -2,6 +2,8 @@ package com.edu.expedicao.application.produto;
 
 import com.edu.expedicao.domain.produto.Produto;
 import com.edu.expedicao.infrastructure.repositories.ProdutoRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,8 +27,14 @@ public class ProdutoService {
         return this.produtoRepository.findAll();
     }
 
-    public Page<Produto> buscarComPaginacao(final Pageable pageable) {
-        return this.produtoRepository.findAll(pageable);
+    public Page<Produto> buscarComPaginacao(final String filter, final Pageable pageable) {
+        final Produto produtoFilter = new Produto();
+        produtoFilter.setDescricao(filter);
+
+        final ExampleMatcher matcher = ExampleMatcher.matchingAny()
+                .withMatcher("descricao", ExampleMatcher.GenericPropertyMatcher::contains);
+
+        return this.produtoRepository.findAll(Example.of(produtoFilter, matcher), pageable);
     }
 
     public Produto criar(final Produto produto) {
