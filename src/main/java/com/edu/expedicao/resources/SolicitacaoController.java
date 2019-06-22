@@ -60,23 +60,27 @@ public class SolicitacaoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
-                        final BindingResult bindingResult) {
+    public ModelAndView criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
+                              final BindingResult bindingResult,
+                              final Model model) {
         if (bindingResult.hasErrors()) {
-            return "/modules/solicitacao/solicitacao-detail";
+            model.addAttribute("revendas", revendaService.buscarTodos());
+            model.addAttribute("produtos", produtoService.buscarTodos());
+            return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
         }
 
         solicitacaoService.criar(novaSolicitacao);
 
-        return "redirect:/solicitacoes/details";
+        return new ModelAndView("redirect:/solicitacoes/details");
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String atualizar(@PathVariable final Long id,
-                            @Valid @ModelAttribute("solicitacao") final Solicitacao solicitacao,
-                            final BindingResult bindingResult) {
+    public ModelAndView atualizar(@PathVariable final Long id,
+                                  @Valid @ModelAttribute("solicitacao") final Solicitacao solicitacao,
+                                  final Model model,
+                                  final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/modules/solicitacao/solicitacao-detail";
+            return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
         }
 
         final Solicitacao old = solicitacaoService.buscarPeloId(id);
@@ -86,7 +90,7 @@ public class SolicitacaoController {
 
         solicitacaoService.atualizar(solicitacao);
 
-        return "redirect:/solicitacoes/" + id + "/details";
+        return new ModelAndView("redirect:/solicitacoes/" + id + "/details");
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
