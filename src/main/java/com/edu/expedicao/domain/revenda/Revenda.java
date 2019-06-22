@@ -1,8 +1,12 @@
 package com.edu.expedicao.domain.revenda;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Revenda {
@@ -10,8 +14,18 @@ public class Revenda {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull(message = "É necessário informar o CNPJ")
+    @NotEmpty(message = "É necessário informar o CNPJ")
+    @Length(min = 14, max = 14, message = "É necessário informar um CNPJ válido")
     private String cnpj;
+
+    @NotNull(message = "É necessário informar o nome")
+    @NotEmpty(message = "É necessário informar o nome")
+    @Length(message = "Não é permitido revendas com nome maior que 60 caracteres")
     private String nome;
+
+    @Length(message = "Não é permitido revendas com endereço maior que 60 caracteres")
     private String endereco;
 
     public Revenda() {

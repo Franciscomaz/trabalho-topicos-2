@@ -24,7 +24,7 @@
                         <fmt:formatNumber value="${produto.valor}" type="currency" currencySymbol="R$"/>
                     </td>
                     <td class="has-ellipsis">${produto.dimensoes}</td>
-                    <td class="has-ellipsis"><${produto.referencia}</td>
+                    <td class="has-ellipsis">${produto.referencia}</td>
                     <td>
                         <a class="button is-small is-text"
                            onclick="sendTo('/produtos/' + ${produto.id} + '/details')">

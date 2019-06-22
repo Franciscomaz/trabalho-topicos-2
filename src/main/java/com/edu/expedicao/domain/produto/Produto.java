@@ -18,7 +18,7 @@ public class Produto {
 
     @NotNull(message = "É necessário informar uma descrição")
     @NotEmpty(message = "É necessário informar uma descrição")
-    @Length(max = 60, message = "Náo é permitido produtos com descrição maior que 60 caracteres")
+    @Length(max = 60, message = "Não é permitido produtos com descrição maior que 60 caracteres")
     private String descricao;
 
     @NotNull(message = "É necessário informar o valor")

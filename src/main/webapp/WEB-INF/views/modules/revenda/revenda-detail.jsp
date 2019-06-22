@@ -39,7 +39,7 @@
                                 <form:input class="input" path="endereco" type="text" placeholder="Endereço"/>
                             </div>
 
-                            <form:errors path="nome" cssClass="help is-danger"/>
+                            <form:errors path="endereco" cssClass="help is-danger"/>
                         </div>
                     </div>
                 </div>

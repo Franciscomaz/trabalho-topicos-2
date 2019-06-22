@@ -70,10 +70,9 @@ public class RevendaController {
         old.setNome(revenda.getNome());
         old.setEndereco(revenda.getEndereco());
 
-
         revendaService.atualizar(revenda);
 
-        return "redirect:/revenda/" + id + "/details";
+        return "redirect:/revendas/details";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
