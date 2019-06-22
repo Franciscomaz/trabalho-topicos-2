@@ -30,7 +30,7 @@
                                     <th>Valor</th>
                                     <th>Dimensões</th>
                                     <th>Referência</th>
-                                    <th>Ações</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
 

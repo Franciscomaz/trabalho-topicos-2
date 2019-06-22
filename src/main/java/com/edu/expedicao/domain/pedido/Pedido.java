@@ -12,7 +12,7 @@ public class Pedido {
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "pedido_id")
     private List<PedidoProduto> produtos;
 
@@ -34,6 +34,10 @@ public class Pedido {
 
     public void setProdutos(List<PedidoProduto> produtos) {
         this.produtos = produtos;
+    }
+
+    public void addProduto(final PedidoProduto produto) {
+        produtos.add(produto);
     }
 
     public LocalDateTime getDataPedido() {

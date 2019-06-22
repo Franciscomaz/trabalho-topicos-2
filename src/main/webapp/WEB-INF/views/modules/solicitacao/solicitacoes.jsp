@@ -29,7 +29,7 @@
                                     <th>Revenda</th>
                                     <th>Status</th>
                                     <th>Data de início</th>
-                                    <th>Ações</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
 
@@ -39,7 +39,7 @@
                                     <tr>
                                         <td class="has-ellipsis"><c:out value="${solicitacao.revenda.nome}"/></td>
                                         <td class="has-ellipsis"><c:out value="${solicitacao.status}"/></td>
-                                        <td class="has-ellipsis"><c:out value="${solicitacao.dataInicio}"/></td>
+                                        <td class="has-ellipsis"><c:out value="${solicitacao.dataHoraInicio}"/></td>
                                         <td>
                                             <a class="button is-small is-text"
                                                onclick="sendTo('/solicitacoes/' + ${solicitacao.id} + '/details')">
@@ -67,8 +67,7 @@
                                                 <p class="modal-card-title">Removendo solicitação</p></header>
 
                                             <section class="modal-card-body">
-                                                <p>Você tem certeza que deseja <b>remover</b> o solicitação
-                                                    <b>${solicitacao.descricao}</b> ?</p>
+                                                <p>Você tem certeza que deseja <b>remover</b> a solicitação ?</p>
                                                 <p class="is-muted">Essa ação não pode ser desfeita.</p>
                                             </section>
 
@@ -79,7 +78,7 @@
                                                 </button>
 
                                                 <button class="button is-danger"
-                                                        onclick="deletarSolicitacao(${solicitacao.id})">
+                                                        onclick="removeTableRow(0)">
                                                     Remover
                                                 </button>
 

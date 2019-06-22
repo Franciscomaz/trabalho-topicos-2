@@ -2,47 +2,91 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
 
-        <%--@elvariable id="solicitacao" type="com.edu.expedicao.domain.solicitacao.Produto"--%>
+        <%--@elvariable id="solicitacao" type="com.edu.expedicao.application.solicitacao.NovaSolicitacao"--%>
         <div class="is-flex is-content-centered">
             <form:form class="card has-round-corners"
-                       action="${solicitacao.id == null ? '/solicitacoes' : '/solicitacoes/'.concat(solicitacao.id)}"
+                       action="/solicitacoes"
                        modelAttribute="solicitacao"
                        method="post"
                        style="min-width: 600px">
                 <div class="card-header">
-                    <p class="card-header-title">${solicitacao.id == null ? 'Cadastrando solicitacão' : 'Editando solicitacão'}</p>
+                    <p class="card-header-title">Cadastrando solicitacão</p>
                 </div>
                 <div class="card-content">
-                    <div class="collumns">
-                        <div class="field">
-                            <label class="label" for="select-produtos">Revenda</label>
-                            <div class="select">
-                                <select id="select-produtos">
-                                    <c:forEach var="produto" items="${produtos}" varStatus="id">
-                                        <option value="${produto.id}">${produto.descricao}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-
-                            <form:errors path="revenda" cssClass="help is-danger"/>
+                    <div class="field">
+                        <label class="label" for="select-revendas">Revenda</label>
+                        <div class="select is-fullwidth">
+                            <form:select id="select-revendas" path="revendaId">
+                                <c:forEach var="revenda" items="${revendas}">
+                                    <option value="${revenda.id}">${revenda.nome}</option>
+                                </c:forEach>
+                            </form:select>
                         </div>
 
-                        <div class="field">
-                            <label class="label" for="select-pedidos">Pedido</label>
-                            <div class="select">
-                                <select id="select-pedidos">
-                                    <c:forEach var="produto" items="${produtos}" varStatus="id">
-                                        <option value="${produto.id}">${produto.descricao}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
+                        <form:errors path="revendaId" cssClass="help is-danger"/>
+                    </div>
 
-                            <form:errors path="pedido" cssClass="help is-danger"/>
+                    <div class="field">
+                        <label class="label">Pedido</label>
+                        <button class="button" type="button" onclick="addTableRow()">
+                            Novo produto
+                        </button>
+
+                        <table id="table-pedidos-produtos" class="table is-bordered is-fullwidth">
+
+                            <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr id="cell-produto-solicitacao-0">
+                                <td class="has-ellipsis">
+                                    <div class="select is-fullwidth">
+                                        <form:select id="select-produtos"
+                                                     path="pedido.produtos[0].produtoId">
+                                            <c:forEach var="produto" items="${produtos}" varStatus="j">
+                                                <option value="${produto.id}">${produto.descricao}</option>
+                                            </c:forEach>
+                                        </form:select>
+                                    </div>
+                                </td>
+
+                                <td class="has-ellipsis" width="30px">
+                                    <form:input cssClass="input" path="pedido.produtos[0].quantidade" type="number"/>
+                                </td>
+
+                                <td width="5px">
+                                    <a class="button is-small is-text" onclick="removeTableRow(0)">
+                                            <span class="icon is-small">
+                                              <i class="fa fa-trash"></i>
+                                            </span>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+                        <form:errors path="pedido" cssClass="help is-danger"/>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Observação</label>
+                        <div class="control">
+                            <form:textarea class="textarea" path="observacao" placeholder="Cor azul"/>
                         </div>
 
+                        <form:errors path="observacao" cssClass="help is-danger"/>
                     </div>
                 </div>
                 <footer class="card-footer">

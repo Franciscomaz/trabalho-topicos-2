@@ -3,6 +3,7 @@ package com.edu.expedicao.domain.pedido;
 import com.edu.expedicao.domain.produto.Produto;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class PedidoProduto {
@@ -11,7 +12,9 @@ public class PedidoProduto {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    private BigDecimal valorUnitario;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
@@ -21,11 +24,14 @@ public class PedidoProduto {
 
     private Integer quantidade;
 
-    public PedidoProduto(final Long id,
+    public PedidoProduto() {
+    }
+
+    public PedidoProduto(final BigDecimal valorUnitario,
                          final Pedido pedido,
                          final Produto produto,
                          final Integer quantidade) {
-        this.id = id;
+        this.valorUnitario = valorUnitario;
         this.pedido = pedido;
         this.produto = produto;
         this.quantidade = quantidade;
@@ -37,6 +43,18 @@ public class PedidoProduto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public BigDecimal valorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(BigDecimal valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public BigDecimal valorReferencia() {
+        return produto.getValor();
     }
 
     public Pedido getPedido() {

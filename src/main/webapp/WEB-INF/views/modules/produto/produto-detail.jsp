@@ -16,57 +16,55 @@
                     <p class="card-header-title">${produto.id == null ? 'Cadastrando produto' : 'Editando produto'}</p>
                 </div>
                 <div class="card-content">
-                    <div class="collumns">
-                        <div class="field">
-                            <label class="label">Descrição</label>
-                            <div class="control">
-                                <form:input class="input" path="descricao" type="text" placeholder="Caixa"/>
-                            </div>
-
-                            <form:errors path="descricao" cssClass="help is-danger"/>
+                    <div class="field">
+                        <label class="label">Descrição</label>
+                        <div class="control">
+                            <form:input class="input" path="descricao" type="text" placeholder="Caixa"/>
                         </div>
 
-                        <div class="field">
-                            <label class="label">Valor</label>
+                        <form:errors path="descricao" cssClass="help is-danger"/>
+                    </div>
 
-                            <div class="field has-addons">
+                    <div class="field">
+                        <label class="label">Valor</label>
 
-                                <p class="control">
-                                    <a class="button is-static">
-                                        R$
-                                    </a>
-                                </p>
+                        <div class="field has-addons">
 
-                                <div class="control has-icons-right is-expanded">
-                                    <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
+                            <p class="control">
+                                <a class="button is-static">
+                                    R$
+                                </a>
+                            </p>
 
-                                    <span class="icon is-small is-right">
+                            <div class="control has-icons-right is-expanded">
+                                <form:input class="input" path="valor" type="number" placeholder="R$ 20.00"/>
+
+                                <span class="icon is-small is-right">
                                         <i class="fa fa-money"></i>
                                     </span>
-                                </div>
-
                             </div>
 
-                            <form:errors path="valor" cssClass="help is-danger"/>
                         </div>
 
-                        <div class="field">
-                            <label class="label">Dimensões</label>
-                            <div class="control">
-                                <form:input class="input" path="dimensoes" type="text" placeholder="10x10 metros"/>
-                            </div>
+                        <form:errors path="valor" cssClass="help is-danger"/>
+                    </div>
 
-                            <form:errors path="dimensoes" cssClass="help is-danger"/>
+                    <div class="field">
+                        <label class="label">Dimensões</label>
+                        <div class="control">
+                            <form:input class="input" path="dimensoes" type="text" placeholder="10x10 metros"/>
                         </div>
 
-                        <div class="field">
-                            <label class="label">Referência</label>
-                            <div class="control">
-                                <form:textarea class="textarea" path="referencia" placeholder="Cor azul"/>
-                            </div>
+                        <form:errors path="dimensoes" cssClass="help is-danger"/>
+                    </div>
 
-                            <form:errors path="referencia" cssClass="help is-danger"/>
+                    <div class="field">
+                        <label class="label">Referência</label>
+                        <div class="control">
+                            <form:textarea class="textarea" path="referencia" placeholder="Cor azul"/>
                         </div>
+
+                        <form:errors path="referencia" cssClass="help is-danger"/>
                     </div>
                 </div>
                 <footer class="card-footer">

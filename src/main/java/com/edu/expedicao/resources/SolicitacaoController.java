@@ -2,6 +2,7 @@ package com.edu.expedicao.resources;
 
 import com.edu.expedicao.application.produto.ProdutoService;
 import com.edu.expedicao.application.revenda.RevendaService;
+import com.edu.expedicao.application.solicitacao.NovaSolicitacao;
 import com.edu.expedicao.application.solicitacao.SolicitacaoService;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
 import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
@@ -44,27 +45,33 @@ public class SolicitacaoController {
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public ModelAndView getPaginaDeCadastro(final Model model) {
-        model.addAttribute("solicitacao", new Solicitacao());
+        model.addAttribute("solicitacao", new NovaSolicitacao());
         model.addAttribute("revendas", revendaService.buscarTodos());
         model.addAttribute("produtos", produtoService.buscarTodos());
         model.addAttribute("statuses", SolicitacaoStatus.values());
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
     }
 
-    @RequestMapping(value = "/{id}/details", method = RequestMethod.GET)
-    public ModelAndView getPaginaDeEdicao(@PathVariable Long id, final Model model) {
-        model.addAttribute("solicitacao", solicitacaoService.buscarPeloId(id));
+
+    @RequestMapping(value = "/produtos", method = RequestMethod.POST)
+    public ModelAndView adicionarProduto(@ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao, Model model) {
+        novaSolicitacao
+                .getPedido()
+                .addProduto();
+
+        model.addAttribute("solicitacao", novaSolicitacao);
+
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String criar(@Valid @ModelAttribute("solicitacao") final Solicitacao solicitacao,
+    public String criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
                         final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "/modules/solicitacao/solicitacao-detail";
         }
 
-        solicitacaoService.criar(solicitacao);
+        solicitacaoService.criar(novaSolicitacao);
 
         return "redirect:/solicitacoes/details";
     }

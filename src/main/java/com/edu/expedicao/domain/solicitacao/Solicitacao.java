@@ -2,6 +2,7 @@ package com.edu.expedicao.domain.solicitacao;
 
 import com.edu.expedicao.domain.pedido.Pedido;
 import com.edu.expedicao.domain.revenda.Revenda;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +15,7 @@ public class Solicitacao {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pedido_id")
     @NotNull(message = "É necessário informar o pedido")
     private Pedido pedido;
@@ -24,23 +25,31 @@ public class Solicitacao {
     @NotNull(message = "É necessário informar a revenda")
     private Revenda revenda;
 
+    @NotNull(message = "É necessário que a solicitação possua um status")
     private SolicitacaoStatus status;
+
+    @Length(max = 255, message = "A observação não pode ultrapassar 255 caracteres")
+    private String observacao;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraConclusao;
 
     public Solicitacao() {
+        pedido = new Pedido();
     }
 
     public Solicitacao(final Long id,
                        final Pedido pedido,
                        final Revenda revenda,
                        final SolicitacaoStatus status,
+                       final String observacao,
                        final LocalDateTime dataHoraInicio,
                        final LocalDateTime dataHoraConclusao) {
+        super();
         this.id = id;
         this.pedido = pedido;
         this.revenda = revenda;
         this.status = status;
+        this.observacao = observacao;
         this.dataHoraInicio = dataHoraInicio;
         this.dataHoraConclusao = dataHoraConclusao;
     }
@@ -75,6 +84,14 @@ public class Solicitacao {
 
     public void setStatus(SolicitacaoStatus status) {
         this.status = status;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public LocalDateTime getDataHoraInicio() {
