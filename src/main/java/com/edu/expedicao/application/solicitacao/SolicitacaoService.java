@@ -41,7 +41,7 @@ public class SolicitacaoService {
         return this.solicitacaoRepository.findAll();
     }
 
-    public Page<Solicitacao> buscarComPaginacao(String filter, final Pageable pageable) {
+    public Page<Solicitacao> buscarComPaginacao(final String filter, final Pageable pageable) {
         final Revenda revendaFilter = new Revenda();
         revendaFilter.setCnpj(filter);
         revendaFilter.setNome(filter);
@@ -49,10 +49,9 @@ public class SolicitacaoService {
         final Solicitacao solicitacaoFilter = new Solicitacao();
         solicitacaoFilter.setRevenda(revendaFilter);
 
-        final ExampleMatcher matcher = ExampleMatcher.matchingAny()
-                .withMatcher("renvenda.nome", ExampleMatcher.GenericPropertyMatcher::contains)
-                .withMatcher("renvenda.cnpj", ExampleMatcher.GenericPropertyMatcher::contains);
-
+        final ExampleMatcher matcher = ExampleMatcher
+                .matchingAny()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
         return this.solicitacaoRepository.findAll(Example.of(solicitacaoFilter, matcher), pageable);
     }

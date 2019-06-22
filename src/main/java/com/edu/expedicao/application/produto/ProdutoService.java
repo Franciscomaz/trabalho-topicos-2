@@ -31,8 +31,8 @@ public class ProdutoService {
         final Produto produtoFilter = new Produto();
         produtoFilter.setDescricao(filter);
 
-        final ExampleMatcher matcher = ExampleMatcher.matchingAny()
-                .withMatcher("descricao", ExampleMatcher.GenericPropertyMatcher::contains);
+        final ExampleMatcher matcher = ExampleMatcher.matching()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
         return this.produtoRepository.findAll(Example.of(produtoFilter, matcher), pageable);
     }

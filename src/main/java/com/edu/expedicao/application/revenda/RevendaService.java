@@ -33,8 +33,7 @@ public class RevendaService {
         revendaFilter.setNome(filter);
 
         final ExampleMatcher matcher = ExampleMatcher.matchingAny()
-                .withMatcher("cnpj", ExampleMatcher.GenericPropertyMatcher::contains)
-                .withMatcher("nome", ExampleMatcher.GenericPropertyMatcher::contains);
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
         return this.revendaRepository.findAll(Example.of(revendaFilter, matcher), pageable);
     }
