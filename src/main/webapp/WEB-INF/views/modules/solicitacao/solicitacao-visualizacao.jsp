@@ -21,6 +21,12 @@
                         <div class="title">${solicitacao.tempoDecorrido().dias}</div>
                     </div>
                 </div>
+                <div class="column is-4">
+                    <div class="box">
+                        <div class="heading">Total de produtos</div>
+                        <div class="title">${solicitacao.pedido.quantidadeDeProdutos()}</div>
+                    </div>
+                </div>
                 <div class="column is-6">
                     <div class="card">
                         <div class="card-header">
@@ -30,7 +36,7 @@
                         </div>
                         <div class="card-content">
                             <div class="level">
-                                <div class="level-item has-text-centered">
+                                <div class="level-item-left">
                                     <div>
                                         <div class="heading is-6">Nome</div>
                                         <div class="title is-6">${solicitacao.revenda.nome}</div>
@@ -48,7 +54,7 @@
                     </div>
                 </div>
                 <div class="column is-6">
-                    <div class="card">
+                    <form:form class="card" method="post" modelAttribute="solicitacao">
                         <div class="card-header">
                             <div class="card-header-title">
                                 Solicitação
@@ -76,16 +82,14 @@
                                     <div class="field">
                                         <div class="heading is-6">Observação</div>
                                         <div class="control">
-                                            <textarea class="textarea" placeholder="Cor azul">
-                                                    ${solicitacao.observacao}
-                                            </textarea>
+                                            <form:textarea class="textarea" path="observacao" placeholder="Cor azul"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div>
+                    </form:form>
                 </div>
             </div>
         </div>

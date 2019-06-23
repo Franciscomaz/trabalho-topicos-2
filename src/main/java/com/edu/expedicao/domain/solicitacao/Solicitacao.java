@@ -75,7 +75,7 @@ public class Solicitacao {
     }
 
     public BigDecimal getValorTotal() {
-        return getPedido().getValorTotal();
+        return getPedido().valorTotal();
     }
 
     public Revenda getRevenda() {

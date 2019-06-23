@@ -23,17 +23,26 @@
                         <div class="title">${quantidadeSolicitacoesEmAberto}</div>
                     </div>
                 </div>
-                <div class="column is-one-third" style="width: 490px">
-                    <div class="card has-content-centered">
+                <div class="column is-one-third">
+                    <div class="box">
+                        <div class="title is-6">Últimas solicitações</div>
 
-                        <div class="card-header">
-                            <div class="card-header-title">Últimas solicitações</div>
-                        </div>
-
-                        <div class="card-content is-flex is-content-centered">
-                            <c:set var="solicitacoes" value="${ultimasSolicitacoes}" scope="request"/>
-                            <jsp:include page="../solicitacao/solicitacao-table.jsp"/>
-                        </div>
+                        <c:forEach var="solicitacao" items="${ultimasSolicitacoes}">
+                            <div class="level">
+                                <div class="level-item-left">
+                                    <a class="title is-6 is-info is-marginless has-text-link"
+                                       href="/solicitacoes/${solicitacao.id}/visualizar">
+                                            ${solicitacao.revenda.nome}
+                                    </a>
+                                    <div class="heading">${solicitacao.dataHoraInicioFormatado}</div>
+                                </div>
+                                <div class="level-item-left">
+                                    <div class="title is-6 is-info is-marginless">R$ ${solicitacao.valorTotal}</div>
+                                    <div class="tag is-info has-small-font"
+                                         style="margin-top: 5px">${solicitacao.status.descricao}</div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

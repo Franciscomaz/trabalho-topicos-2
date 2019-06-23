@@ -29,11 +29,18 @@ public class Pedido {
         this.dataPedido = dataPedido;
     }
 
-    public BigDecimal getValorTotal() {
+    public BigDecimal valorTotal() {
         return getProdutos().stream()
                 .map(PedidoProduto::getValorTotal)
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
+    }
+
+    public Integer quantidadeDeProdutos() {
+        return getProdutos().stream()
+                .map(PedidoProduto::getQuantidade)
+                .reduce(Integer::sum)
+                .orElse(0);
     }
 
     public List<PedidoProduto> getProdutos() {
