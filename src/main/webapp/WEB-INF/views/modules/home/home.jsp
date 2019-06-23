@@ -38,11 +38,12 @@
                                 </div>
                                 <div class="level-item-left">
                                     <div class="title is-6 is-info is-marginless">R$ ${solicitacao.valorTotal}</div>
-                                    <div class="tag is-info has-small-font"
+                                    <div class="tag is-info has-small-font is-pulled-right"
                                          style="margin-top: 5px">${solicitacao.status.descricao}</div>
                                 </div>
                             </div>
                         </c:forEach>
+                        <a class="button is-info is-small is-outlined" href="/solicitacoes">Visualizar todas</a>
                     </div>
                 </div>
             </div>
