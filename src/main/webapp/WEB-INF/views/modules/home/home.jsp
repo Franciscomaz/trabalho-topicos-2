@@ -19,7 +19,7 @@
                 </div>
                 <div class="column is-4">
                     <div class="box">
-                        <div class="heading">Quantidade de solicitações em aberto</div>
+                        <div class="heading">Solicitações em aberto</div>
                         <div class="title">${quantidadeSolicitacoesEmAberto}</div>
                     </div>
                 </div>

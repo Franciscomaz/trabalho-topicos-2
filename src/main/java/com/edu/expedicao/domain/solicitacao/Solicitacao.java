@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 @Entity
 public class Solicitacao {
@@ -118,5 +120,22 @@ public class Solicitacao {
 
     public String getDataHoraInicioFormatado() {
         return getDataHoraInicio().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    public TempoDecorrido tempoDecorrido() {
+        if (!isConcluida()) {
+            final LocalDateTime now = LocalDateTime.now();
+            return new TempoDecorrido(ChronoUnit.DAYS.between(getDataHoraInicio(), now),
+                    ChronoUnit.MONTHS.between(getDataHoraInicio(), now),
+                    ChronoUnit.YEARS.between(getDataHoraInicio(), now));
+        }
+
+        return new TempoDecorrido(ChronoUnit.DAYS.between(getDataHoraInicio(), getDataHoraConclusao()),
+                ChronoUnit.MONTHS.between(getDataHoraInicio(), getDataHoraConclusao()),
+                ChronoUnit.YEARS.between(getDataHoraInicio(), getDataHoraConclusao()));
+    }
+
+    public Boolean isConcluida() {
+        return Objects.nonNull(dataHoraConclusao);
     }
 }

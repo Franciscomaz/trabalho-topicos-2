@@ -5,8 +5,10 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.swing.text.MaskFormatter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.text.ParseException;
 
 @Entity
 public class Revenda {
@@ -68,5 +70,17 @@ public class Revenda {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public String getCnpjFormatado() {
+        try {
+            final MaskFormatter mask = new MaskFormatter("###.###.###/####-##");
+
+            mask.setValueContainsLiteralCharacters(false);
+
+            return mask.valueToString(getCnpj());
+        } catch (ParseException ex) {
+            return getCnpj();
+        }
     }
 }
