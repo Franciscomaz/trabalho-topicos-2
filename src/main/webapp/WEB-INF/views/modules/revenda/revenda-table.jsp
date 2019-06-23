@@ -31,7 +31,7 @@
                         </a>
 
                         <a class="button modal-button is-small is-text"
-                           data-target="modal-confirmar-remover"
+                           data-target="modal-confirmar-remover-${revenda.id}"
                            aria-haspopup="true">
                             <span class="icon is-small">
                               <i class="fa fa-trash"></i>
@@ -41,7 +41,7 @@
                 </tr>
 
                 <!-- Modal de confirmação da remoção de revenda -->
-                <div id="modal-confirmar-remover" class="modal">
+                <div id="modal-confirmar-remover-${revenda.id}" class="modal">
                     <div class="modal-background"></div>
                     <div class="modal-card animation-content">
 

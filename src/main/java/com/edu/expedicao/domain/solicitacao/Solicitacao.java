@@ -25,7 +25,7 @@ public class Solicitacao {
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "Revenda_id")
+    @JoinColumn(name = "revenda_id")
     @NotNull(message = "É necessário informar a revenda")
     private Revenda revenda;
 

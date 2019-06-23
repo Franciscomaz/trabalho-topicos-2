@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://kwonnam.pe.kr/jsp/template-inheritance" prefix="layout" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
         <div class="container">
@@ -37,8 +38,11 @@
                                     <div class="heading">${solicitacao.dataHoraInicioFormatado}</div>
                                 </div>
                                 <div class="level-item-left">
-                                    <div class="title is-6 is-info is-marginless">R$ ${solicitacao.valorTotal}</div>
-                                    <div class="tag is-info has-small-font is-pulled-right"
+                                    <div class="title is-6 is-info is-marginless">
+                                        <fmt:formatNumber value="${solicitacao.valorTotal}" type="currency"
+                                                          currencySymbol="R$"/>
+                                    </div>
+                                    <div class="tag ${solicitacao.status.cor} has-small-font is-pulled-right has-text-white"
                                          style="margin-top: 5px">${solicitacao.status.descricao}</div>
                                 </div>
                             </div>

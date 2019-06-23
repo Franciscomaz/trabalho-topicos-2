@@ -48,18 +48,19 @@
                             <thead>
                             <tr>
                                 <th>Produto</th>
+                                <th>Valor</th>
                                 <th>Quantidade</th>
-                                <th></th>
                             </tr>
                             </thead>
 
                             <tbody>
 
-                            <tr id="cell-produto-solicitacao-0}">
+                            <tr id="cell-produto-solicitacao-0">
                                 <td class="has-ellipsis">
                                     <div class="select is-fullwidth">
                                         <form:select id="select-produtos"
-                                                     path="pedido.produtos[0].produtoId">
+                                                     path="pedido.produtos[0].produtoId"
+                                                     onchange="onChangeProduto()">
                                             <c:forEach var="produto" items="${produtos}">
                                                 <option value="${produto.id}">${produto.descricao}</option>
                                             </c:forEach>
@@ -67,17 +68,14 @@
                                     </div>
                                 </td>
 
-                                <td class="has-ellipsis" width="30px">
-                                    <form:input cssClass="input" path="pedido.produtos[0].quantidade"
+                                <td id="input-produto-pedido-valor" class="has-ellipsis" width="100px">
+                                    <form:input cssClass="input" path="pedido.produtos[0].valor"
                                                 type="number"/>
                                 </td>
 
-                                <td width="5px">
-                                    <a class="button is-small is-text" onclick="removeTableRow(0)">
-                                    <span class="icon is-small">
-                                      <i class="fa fa-trash"></i>
-                                    </span>
-                                    </a>
+                                <td class="has-ellipsis" width="30px">
+                                    <form:input cssClass="input" path="pedido.produtos[0].quantidade"
+                                                type="number"/>
                                 </td>
 
                             </tr>

@@ -6,7 +6,9 @@ public class TempoDecorrido {
     private final Long meses;
     private final Long anos;
 
-    public TempoDecorrido(Long dias, Long meses, Long anos) {
+    public TempoDecorrido(final Long dias,
+                          final Long meses,
+                          final Long anos) {
         this.dias = dias;
         this.meses = meses;
         this.anos = anos;

@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-
 <c:choose>
     <c:when test="${!requestScope.produtos.isEmpty()}">
         <table class="table is-bordered">
@@ -34,7 +33,7 @@
                         </a>
 
                         <a class="button modal-button is-small is-text"
-                           data-target="modal-confirmar-remover"
+                           data-target="modal-confirmar-remover-${produto.id}"
                            aria-haspopup="true">
                             <span class="icon is-small">
                               <i class="fa fa-trash"></i>
@@ -44,7 +43,7 @@
                 </tr>
 
                 <!-- Modal de confirmação da remoção do produto -->
-                <div id="modal-confirmar-remover" class="modal">
+                <div id="modal-confirmar-remover-${produto.id}" class="modal">
                     <div class="modal-background"></div>
                     <div class="modal-card animation-content">
 

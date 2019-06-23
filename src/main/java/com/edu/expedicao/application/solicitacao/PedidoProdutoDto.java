@@ -1,8 +1,11 @@
 package com.edu.expedicao.application.solicitacao;
 
+import java.math.BigDecimal;
+
 public class PedidoProdutoDto {
 
     private Long produtoId;
+    private BigDecimal valor;
     private Integer quantidade;
 
     public PedidoProdutoDto() {
@@ -15,6 +18,10 @@ public class PedidoProdutoDto {
 
     public void setProdutoId(Long produtoId) {
         this.produtoId = produtoId;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
     }
 
     public Integer getQuantidade() {

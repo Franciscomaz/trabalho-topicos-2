@@ -5,6 +5,7 @@ import com.edu.expedicao.application.revenda.RevendaService;
 import com.edu.expedicao.application.solicitacao.NovaSolicitacao;
 import com.edu.expedicao.application.solicitacao.SolicitacaoService;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
+import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.EnumSet;
 
 @Controller
 @RequestMapping("/solicitacoes")
@@ -50,7 +53,15 @@ public class SolicitacaoController {
     @RequestMapping(value = "/{id}/visualizar", method = RequestMethod.GET)
     public ModelAndView getPaginaDeVisualizacao(@PathVariable Long id, final Model model) {
         model.addAttribute("solicitacao", solicitacaoService.buscarPeloId(id));
+        model.addAttribute("statuses", EnumSet.allOf(SolicitacaoStatus.class));
+        System.out.println(Arrays.toString(SolicitacaoStatus.values()));
         return new ModelAndView("/modules/solicitacao/solicitacao-visualizacao", model.asMap());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Solicitacao findById(@PathVariable final Long id) {
+        return solicitacaoService.buscarPeloId(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
