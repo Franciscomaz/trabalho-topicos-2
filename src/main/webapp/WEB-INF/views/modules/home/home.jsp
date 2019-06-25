@@ -27,27 +27,35 @@
                 <div class="column is-one-third">
                     <div class="box">
                         <div class="title is-6">Últimas solicitações</div>
-
-                        <c:forEach var="solicitacao" items="${ultimasSolicitacoes}">
-                            <div class="level">
-                                <div class="level-item-left">
-                                    <a class="title is-6 is-info is-marginless has-text-link"
-                                       href="/solicitacoes/${solicitacao.id}/visualizar">
-                                            ${solicitacao.revenda.nome}
-                                    </a>
-                                    <div class="heading">${solicitacao.dataHoraInicioFormatado}</div>
-                                </div>
-                                <div class="level-item-left">
-                                    <div class="title is-6 is-info is-marginless">
-                                        <fmt:formatNumber value="${solicitacao.valorTotal}" type="currency"
-                                                          currencySymbol="R$"/>
+                        <c:choose>
+                            <c:when test="${!ultimasSolicitacoes.isEmpty()}">
+                                <c:forEach var="solicitacao" items="${ultimasSolicitacoes}">
+                                    <div class="level">
+                                        <div class="level-item-left">
+                                            <a class="title is-6 is-info is-marginless has-text-link"
+                                               href="/solicitacoes/${solicitacao.id}/visualizar">
+                                                    ${solicitacao.revenda.nome}
+                                            </a>
+                                            <div class="heading">${solicitacao.dataHoraInicioFormatado}</div>
+                                        </div>
+                                        <div class="level-item-left">
+                                            <div class="title is-6 is-info is-marginless">
+                                                <fmt:formatNumber value="${solicitacao.valorTotal}" type="currency"
+                                                                  currencySymbol="R$"/>
+                                            </div>
+                                            <div class="tag ${solicitacao.status.cor} has-small-font is-pulled-right has-text-white"
+                                                 style="margin-top: 5px">${solicitacao.status.descricao}</div>
+                                        </div>
                                     </div>
-                                    <div class="tag ${solicitacao.status.cor} has-small-font is-pulled-right has-text-white"
-                                         style="margin-top: 5px">${solicitacao.status.descricao}</div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                        <a class="button is-info is-small is-outlined" href="/solicitacoes">Visualizar todas</a>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                Nenhuma <a class="is-info" href="/solicitacoes">solicitação</a> encontrada.
+                            </c:otherwise>
+                        </c:choose>
+                        <c:if test="${!ultimasSolicitacoes.isEmpty()}">
+                            <a class="button is-info is-small is-outlined" href="/solicitacoes">Visualizar todas</a>
+                        </c:if>
                     </div>
                 </div>
             </div>

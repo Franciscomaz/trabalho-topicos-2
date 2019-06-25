@@ -10,7 +10,7 @@
             <tr>
                 <th>Nome</th>
                 <th>CNPJ</th>
-                <th>Endereco</th>
+                <th>Endereço</th>
                 <th></th>
             </tr>
             </thead>
