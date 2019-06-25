@@ -1,5 +1,8 @@
 package com.edu.expedicao.domain.solicitacao;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class TempoDecorrido {
 
     private final Long dias;
@@ -12,6 +15,12 @@ public class TempoDecorrido {
         this.dias = dias;
         this.meses = meses;
         this.anos = anos;
+    }
+
+    public static TempoDecorrido between(final LocalDateTime from, LocalDateTime to) {
+        return new TempoDecorrido(ChronoUnit.DAYS.between(from, to),
+                ChronoUnit.MONTHS.between(from, to),
+                ChronoUnit.YEARS.between(from, to));
     }
 
     public Long getDias() {

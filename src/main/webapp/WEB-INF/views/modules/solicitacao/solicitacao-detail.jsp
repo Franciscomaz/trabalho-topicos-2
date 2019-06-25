@@ -7,7 +7,7 @@
 <layout:extends name="/WEB-INF/views/common/template.jsp">
     <layout:put block="body">
 
-        <%--@elvariable id="solicitacao" type="com.edu.expedicao.application.solicitacao.NovaSolicitacao"--%>
+        <%--@elvariable id="solicitacao" type="com.edu.expedicao.application.solicitacao.NovaSolicitacaoCommand"--%>
         <div class="is-flex is-content-centered">
             <form:form class="card has-round-corners"
                        action="/solicitacoes"

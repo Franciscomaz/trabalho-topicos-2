@@ -22,6 +22,16 @@ public enum SolicitacaoStatus {
         this.isFinalizador = isFinalizado;
     }
 
+    public static SolicitacaoStatus fromCodigo(final Integer codigo) {
+        for (final SolicitacaoStatus status : SolicitacaoStatus.values()) {
+            if (status.getCodigo().equals(codigo)) {
+                return status;
+            }
+        }
+
+        return null;
+    }
+
     public Integer getCodigo() {
         return codigo;
     }

@@ -56,7 +56,7 @@ public class SolicitacaoService {
         return this.solicitacaoRepository.findAll(Example.of(solicitacaoFilter, matcher), pageable);
     }
 
-    public Solicitacao criar(final NovaSolicitacao novaSolicitacao) {
+    public Solicitacao criar(final NovaSolicitacaoCommand novaSolicitacao) {
         final Pedido novoPedido = new Pedido();
 
         novaSolicitacao
@@ -86,7 +86,13 @@ public class SolicitacaoService {
         return this.solicitacaoRepository.save(solicitacao);
     }
 
-    public Solicitacao atualizar(final Solicitacao solicitacao) {
+    public Solicitacao alterarSolicitacao(final Solicitacao solicitacao, final AlterarSolicitacaoCommand alterarSolicitacaoCommand) {
+        if (alterarSolicitacaoCommand.possuiStatus()) {
+            solicitacao.setStatus(SolicitacaoStatus.fromCodigo(alterarSolicitacaoCommand.getStatusCodigo()));
+        }
+
+        solicitacao.setObservacao(alterarSolicitacaoCommand.getObservacao());
+
         return this.solicitacaoRepository.save(solicitacao);
     }
 

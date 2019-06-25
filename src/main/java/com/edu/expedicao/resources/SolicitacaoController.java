@@ -2,7 +2,8 @@ package com.edu.expedicao.resources;
 
 import com.edu.expedicao.application.produto.ProdutoService;
 import com.edu.expedicao.application.revenda.RevendaService;
-import com.edu.expedicao.application.solicitacao.NovaSolicitacao;
+import com.edu.expedicao.application.solicitacao.AlterarSolicitacaoCommand;
+import com.edu.expedicao.application.solicitacao.NovaSolicitacaoCommand;
 import com.edu.expedicao.application.solicitacao.SolicitacaoService;
 import com.edu.expedicao.domain.solicitacao.Solicitacao;
 import com.edu.expedicao.domain.solicitacao.SolicitacaoStatus;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.EnumSet;
 
 @Controller
@@ -44,7 +44,7 @@ public class SolicitacaoController {
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public ModelAndView getPaginaDeCadastro(final Model model) {
-        model.addAttribute("solicitacao", new NovaSolicitacao());
+        model.addAttribute("solicitacao", new NovaSolicitacaoCommand());
         model.addAttribute("revendas", revendaService.buscarTodos());
         model.addAttribute("produtos", produtoService.buscarTodos());
         return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
@@ -52,9 +52,13 @@ public class SolicitacaoController {
 
     @RequestMapping(value = "/{id}/visualizar", method = RequestMethod.GET)
     public ModelAndView getPaginaDeVisualizacao(@PathVariable Long id, final Model model) {
-        model.addAttribute("solicitacao", solicitacaoService.buscarPeloId(id));
+        final Solicitacao solicitacao = solicitacaoService.buscarPeloId(id);
+
+        model.addAttribute("solicitacao", solicitacao);
         model.addAttribute("statuses", EnumSet.allOf(SolicitacaoStatus.class));
-        System.out.println(Arrays.toString(SolicitacaoStatus.values()));
+        model.addAttribute("alteracaoSolicitacao", new AlterarSolicitacaoCommand(solicitacao.getStatus().getCodigo(),
+                solicitacao.getObservacao()));
+
         return new ModelAndView("/modules/solicitacao/solicitacao-visualizacao", model.asMap());
     }
 
@@ -65,7 +69,7 @@ public class SolicitacaoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacao novaSolicitacao,
+    public ModelAndView criar(@Valid @ModelAttribute("solicitacao") final NovaSolicitacaoCommand novaSolicitacao,
                               final BindingResult bindingResult,
                               final Model model) {
         if (bindingResult.hasErrors()) {
@@ -81,21 +85,18 @@ public class SolicitacaoController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public ModelAndView atualizar(@PathVariable final Long id,
-                                  @Valid @ModelAttribute("solicitacao") final Solicitacao solicitacao,
-                                  final Model model,
-                                  final BindingResult bindingResult) {
+                                  @Valid @ModelAttribute("alteracaoSolicitacao") final AlterarSolicitacaoCommand alterarSolicitacaoCommand,
+                                  final BindingResult bindingResult,
+                                  final Model model) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/modules/solicitacao/solicitacao-detail", model.asMap());
+            model.addAttribute("solicitacao", solicitacaoService.buscarPeloId(id));
+            model.addAttribute("statuses", EnumSet.allOf(SolicitacaoStatus.class));
+            return new ModelAndView("/modules/solicitacao/solicitacao-visualizacao", model.asMap());
         }
 
-        final Solicitacao old = solicitacaoService.buscarPeloId(id);
+        solicitacaoService.alterarSolicitacao(solicitacaoService.buscarPeloId(id), alterarSolicitacaoCommand);
 
-        old.setPedido(solicitacao.getPedido());
-        old.setRevenda(solicitacao.getRevenda());
-
-        solicitacaoService.atualizar(solicitacao);
-
-        return new ModelAndView("redirect:/solicitacoes/" + id + "/details");
+        return new ModelAndView("redirect:/solicitacoes/" + id + "/visualizar");
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
