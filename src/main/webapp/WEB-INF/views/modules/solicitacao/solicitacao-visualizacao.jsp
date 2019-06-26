@@ -32,17 +32,31 @@
                 <div class="column is-4">
                     <div class="box">
                         <div class="title is-6">Revenda</div>
-                        <div class="level">
-                            <div class="level-item-left">
-                                <div>
-                                    <div class="heading is-6">Nome</div>
-                                    <div class="title is-6">${solicitacao.revenda.nome}</div>
+                        <div class="columns is-multiline">
+                            <div class="column is-12">
+                                <div class="level">
+                                    <div class="level-item-left">
+                                        <div>
+                                            <div class="heading is-6">Nome</div>
+                                            <div class="title is-6">${solicitacao.revenda.nome}</div>
+                                        </div>
+                                    </div>
+                                    <div class="level-item-right">
+                                        <div>
+                                            <div class="heading is-6">CNPJ</div>
+                                            <div class="title is-6">${solicitacao.revenda.cnpjFormatado}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="level-item-right">
-                                <div>
-                                    <div class="heading is-6">CNPJ</div>
-                                    <div class="title is-6">${solicitacao.revenda.cnpjFormatado}</div>
+                            <div class="column is-12">
+                                <div class="level">
+                                    <div>
+                                        <div class="heading">Endereço</div>
+                                        <div class="title is-7" title="${solicitacao.revenda.endereco.formatar()}">
+                                                ${solicitacao.revenda.endereco.formatar()}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

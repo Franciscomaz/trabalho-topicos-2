@@ -21,7 +21,9 @@
                 <tr>
                     <td class="has-ellipsis">${revenda.nome}</td>
                     <td class="has-ellipsis" align="right">${revenda.cnpjFormatado}</td>
-                    <td class="has-ellipsis">${revenda.endereco}</td>
+                    <td class="has-ellipsis" title="${revenda.endereco.formatar()}">
+                            ${revenda.endereco.formatar()}
+                    </td>
                     <td>
                         <a class="button is-small is-text"
                            onclick="sendTo('/revendas/' + ${revenda.id} + '/details')">

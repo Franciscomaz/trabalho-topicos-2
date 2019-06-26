@@ -2,10 +2,9 @@ package com.edu.expedicao.domain.revenda;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.swing.text.MaskFormatter;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.text.ParseException;
@@ -27,13 +26,16 @@ public class Revenda {
     @Length(message = "Não é permitido revendas com nome maior que 60 caracteres")
     private String nome;
 
-    @Length(message = "Não é permitido revendas com endereço maior que 60 caracteres")
-    private String endereco;
+    @Valid
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    @NotNull(message = "É necessário informar o endereço")
+    private Endereco endereco;
 
     public Revenda() {
     }
 
-    public Revenda(Long id, String cnpj, String nome, String endereco) {
+    public Revenda(Long id, String cnpj, String nome, Endereco endereco) {
         this.id = id;
         this.cnpj = cnpj;
         this.nome = nome;
@@ -64,11 +66,11 @@ public class Revenda {
         this.nome = nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 

@@ -31,54 +31,32 @@
                         <form:errors path="revendaId" cssClass="help is-danger"/>
                     </div>
 
-                    <div class="field">
-                        <div class="is-flex" style="justify-content: space-between">
-                            <div class="label">Pedido</div>
-                            <div>
-                                <a class="button is-text">
-                                    <span class="icon has-text-link">
-                                      <i class="fas fa-plus"></i>
-                                    </span>
-                                </a>
+                    <div class="field field-body">
+                        <div class="field">
+                            <label class="label">Produto</label>
+                            <div class="select is-fullwidth">
+                                <form:select id="select-produtos"
+                                             path="pedido.produtos[0].produtoId"
+                                             onchange="onChangeProduto()">
+                                    <c:forEach var="produto" items="${produtos}">
+                                        <option value="${produto.id}">${produto.descricao}</option>
+                                    </c:forEach>
+                                </form:select>
                             </div>
+
+                            <form:errors path="pedido.produtos" cssClass="help is-danger"/>
                         </div>
 
-                        <table id="table-pedidos-produtos" class="table is-bordered is-fullwidth">
+                        <div class="field is-narrow">
+                            <label class="label">Quantidade</label>
+                            <div class="control">
+                                <form:input cssClass="input" path="pedido.produtos[0].quantidade"
+                                            type="number"/>
+                            </div>
 
-                            <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                            </tr>
-                            </thead>
+                            <form:errors path="pedido.produtos[0].quantidade" cssClass="help is-danger"/>
+                        </div>
 
-                            <tbody>
-
-                            <tr id="cell-produto-solicitacao-0">
-                                <td class="has-ellipsis">
-                                    <div class="select is-fullwidth">
-                                        <form:select id="select-produtos"
-                                                     path="pedido.produtos[0].produtoId"
-                                                     onchange="onChangeProduto()">
-                                            <c:forEach var="produto" items="${produtos}">
-                                                <option value="${produto.id}">${produto.descricao}</option>
-                                            </c:forEach>
-                                        </form:select>
-                                    </div>
-                                </td>
-
-                                <td class="has-ellipsis" width="30px">
-                                    <form:input cssClass="input" path="pedido.produtos[0].quantidade"
-                                                type="number"/>
-                                </td>
-
-                            </tr>
-
-                            </tbody>
-
-                        </table>
-
-                        <form:errors path="pedido" cssClass="help is-danger"/>
                     </div>
 
                     <div class="field">

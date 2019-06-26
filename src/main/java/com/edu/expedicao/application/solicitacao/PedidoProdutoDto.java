@@ -1,11 +1,12 @@
 package com.edu.expedicao.application.solicitacao;
 
-import java.math.BigDecimal;
+import javax.validation.constraints.Min;
 
 public class PedidoProdutoDto {
 
     private Long produtoId;
-    private BigDecimal valor;
+
+    @Min(value = 1, message = "É necessário possuir pelo menos um produto")
     private Integer quantidade;
 
     public PedidoProdutoDto() {
@@ -18,10 +19,6 @@ public class PedidoProdutoDto {
 
     public void setProdutoId(Long produtoId) {
         this.produtoId = produtoId;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
     }
 
     public Integer getQuantidade() {

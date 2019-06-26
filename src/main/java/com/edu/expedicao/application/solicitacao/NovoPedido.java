@@ -1,5 +1,6 @@
 package com.edu.expedicao.application.solicitacao;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 public class NovoPedido {
     private Long id;
 
+    @Valid
     @NotEmpty(message = "É necessário informar pelo menos um produto")
     private List<PedidoProdutoDto> produtos;
 

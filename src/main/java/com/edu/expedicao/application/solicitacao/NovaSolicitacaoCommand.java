@@ -2,6 +2,7 @@ package com.edu.expedicao.application.solicitacao;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -9,6 +10,8 @@ public class NovaSolicitacaoCommand implements Serializable {
 
     @NotNull(message = "É necessário informar a revenda")
     private Long revendaId;
+
+    @Valid
     private NovoPedido pedido;
 
     @Length(max = 255, message = "A observação não pode ultrapassar 255 caracteres")
