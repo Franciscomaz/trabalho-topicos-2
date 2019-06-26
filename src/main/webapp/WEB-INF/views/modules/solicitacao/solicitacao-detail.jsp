@@ -48,7 +48,6 @@
                             <thead>
                             <tr>
                                 <th>Produto</th>
-                                <th>Valor</th>
                                 <th>Quantidade</th>
                             </tr>
                             </thead>
@@ -66,11 +65,6 @@
                                             </c:forEach>
                                         </form:select>
                                     </div>
-                                </td>
-
-                                <td id="input-produto-pedido-valor" class="has-ellipsis" width="100px">
-                                    <form:input cssClass="input" path="pedido.produtos[0].valor"
-                                                type="number"/>
                                 </td>
 
                                 <td class="has-ellipsis" width="30px">
