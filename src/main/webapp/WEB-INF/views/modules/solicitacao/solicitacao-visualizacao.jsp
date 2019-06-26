@@ -53,7 +53,7 @@
                                 <div class="level">
                                     <div>
                                         <div class="heading">Endereço</div>
-                                        <div class="title is-7" title="${solicitacao.revenda.endereco.formatar()}">
+                                        <div class="title is-6" title="${solicitacao.revenda.endereco.formatar()}">
                                                 ${solicitacao.revenda.endereco.formatar()}
                                         </div>
                                     </div>
